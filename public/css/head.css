@@ -1,18 +1,31 @@
+:root{
+    --main-color:#FF033E;
+    --soft-white: #FBFAF5;
+    --honeydew:#F0FFF0;
+    --secondary-color:#228B22;
+    --charcoal:#36454F;
+    --vampire-black:#080808;
+    --box-shadow:0 3px 5px rgba(0,0,0,0.7);
+    --border:2px solid rgba(0,0,0,0.4);
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
-:root{
-    --main-color:rgb(235, 8, 8);
-}
 
 html{
-    font-size: 62.5%;
+    font-size:62.5%;
+}
+
+body{
+    background: var(--soft-white);
+    font-family: 'Montserrat', sans-serif;
 }
 
 ul{
-    list-style: none;
+    list-style:none;
 }
 
 a{
@@ -21,6 +34,137 @@ a{
     cursor: pointer;
 }
 
-.navbar{
-  color:var(--main-color);
+.btn{
+    display: block;
+    width:12rem;
+    border-radius: 2rem;
+    text-align: center;
+    font-size:2.4rem;
+    background: var(--main-color);
+    color:var(--honeydew);
+    border:none;
+    outline:none;
+}
+
+.btn:hover{
+    transform: translateY(.2rem);
+    background: var(--secondary-color);
+}
+
+header{
+    font-family: 'Nunito', sans-serif;
+    width:100%;
+    height:7rem;
+    padding:0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow:var(--box-shadow);
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap:.7rem;
+}
+
+.logo img{
+    width:7rem;
+    height:7rem;
+}
+
+.logo h1{
+    color:var(--charcoal);
+    font-size:3rem;
+
+}
+
+.navList{
+    display: flex;
+    gap:2rem;
+}
+
+.navListItem a{
+    font-size:2.3rem;
+}
+
+.navListItem .active,.navListItem a:hover{
+    color:var(--secondary-color);
+}
+
+.user-sec{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+}
+
+.badge{
+    position: relative;
+}
+
+.badge i{
+    font-size:2.5rem;
+}
+
+.badge span{
+    position: absolute;
+    top:-1rem;
+    right:0;
+    font-size:1.2rem;
+    padding:.2rem;
+    background:var(--secondary-color);
+    color:var(--honeydew);
+    border-radius: 50%;
+}
+
+#menu{
+    font-size:2rem;
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:991px) {
+    
+    #menu{
+        display: block;
+    }
+
+    .navList{
+        position: absolute;
+        width:100%;
+        top:7rem;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .navList.active{
+        display: flex;
+    }
+}
+
+@media (max-width:768px) {
+    html{
+        font-size: 55%;
+    }
 }
