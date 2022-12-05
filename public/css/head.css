@@ -3,6 +3,7 @@
     --soft-white: #FBFAF5;
     --honeydew:#F0FFF0;
     --secondary-color:#228B22;
+    --gray:rgb(187, 184, 184);
     --charcoal:#36454F;
     --vampire-black:#080808;
     --box-shadow:0 3px 5px rgba(0,0,0,0.7);
@@ -49,6 +50,7 @@ a{
 .btn:hover{
     transform: translateY(.2rem);
     background: var(--secondary-color);
+    color:var(--charcoal);
 }
 
 header{
@@ -88,7 +90,7 @@ header{
     font-size:2.3rem;
 }
 
-.navListItem .active,.navListItem a:hover{
+.navListItem .active,.navListItem #links:hover{
     color:var(--secondary-color);
 }
 
@@ -152,10 +154,12 @@ header{
         position: absolute;
         width:100%;
         top:7rem;
+        left:0;
         display: none;
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        background-color: var(--honeydew);
     }
 
     .navList.active{
