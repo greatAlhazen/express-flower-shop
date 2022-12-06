@@ -53,6 +53,20 @@ a{
     color:var(--charcoal);
 }
 
+.heading{
+    text-align: center;
+    background:var(--secondary-color);
+    -webkit-background-clip: text;
+    color:transparent;
+    font-size:3rem;
+    margin-bottom:3rem;
+}
+
+.heading:hover{
+    background-color: var(--main-color);
+    letter-spacing: .7rem;
+}
+
 header{
     font-family: 'Nunito', sans-serif;
     width:100%;
