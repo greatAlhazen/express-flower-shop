@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
 const homeRoute =require('./routes/home');
+const authRoute = require('./routes/auth');
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,7 @@ app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
 app.use('/home',homeRoute);
+app.use('/auth',authRoute);
 
 
 
