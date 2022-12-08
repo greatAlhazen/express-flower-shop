@@ -7,25 +7,32 @@
         <form action="">
         <h1 class="formContainerHeading">Register</h1>
         <div class="formContainerBox">
-            <input type="text" placeholder="please enter your Username....">
+            <input type="text" placeholder="please enter your Username...." id="username">
+            <span class="formContainerBoxInfo" id="nameError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="email" placeholder="please enter your Email....">
+            <input type="email" placeholder="please enter your Email...." id="email">
+            <span class="formContainerBoxInfo" id="emailError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="password" placeholder="please enter your Password.....">
+            <input type="password" placeholder="please enter your Password....." id="password">
             <span class="fas fa-eye"></span>
             <span class="fas fa-eye-slash"></span>
+            <span class="formContainerBoxInfo" id="passwordError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="password" placeholder="please enter your Password Again....">
+            <input type="password" placeholder="please enter your Password Again...." id="againPassword">
             <span class="fas fa-eye" id="open"></span>
             <span class="fas fa-eye-slash" id="close"></span>
+            <span class="formContainerBoxInfo" id="againError"></span>
         </div>
-        <a href="" class="btn">Register</a>
+        <span class="formContainerBoxInfo" id="commonError"></span>
+        <a href="" class="btn" id="submitButton" onclick="return validateForm()">Register</a>
         <a href="" class="formContainerRedirect">Or <span>Login</span></a>
     </form>
     </section>
 
+    
     <script src="/scripts/form.js"></script>
+    <script src="/scripts/registerValidation.js"></script>
     <%- include('partials/end')  %> 

@@ -186,3 +186,9 @@ header{
         font-size: 55%;
     }
 }
+
+@media (max-width:468px) {
+    html{
+        font-size: 50%;
+    }
+}
