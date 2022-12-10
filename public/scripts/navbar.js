@@ -18,4 +18,12 @@ allLinks.forEach((item) =>{
     item.addEventListener('click',function(){
         activateLink(item)
     })
+});
+
+
+const userProfile = document.querySelector('#userImage');
+const userInfo = document.querySelector('.userInfo');
+
+userProfile.addEventListener('click',() =>{
+    userInfo.classList.toggle('active');
 })

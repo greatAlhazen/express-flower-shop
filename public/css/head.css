@@ -139,6 +139,74 @@ header{
 }
 
 
+.userImage{
+    width:5rem;
+    height:5rem;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.userInfo{
+    position: absolute;
+    top:7rem;
+    right:0;
+    width:22rem;
+    background-color: var(--honeydew);
+    display: none;
+}
+
+.userInfo.active{
+    display: block;
+}
+
+.userInfoTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: var(--border);
+    padding:2rem;
+}
+
+
+.userInfoTop img{
+    width:5rem;
+    height:5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userInfoTopTitle{
+    font-size:2rem;
+}
+
+.userInfoLinks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:2rem;
+    padding:2rem 0;
+}
+
+.userInfoLinks li a{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    font-size:2rem;
+    transition: .3s;
+}
+
+.userInfoLinks li a:hover{
+    padding:1rem;
+    border: var(--border);
+    border-radius: 2rem;
+    background-color: var(--secondary-color);
+}
+
+
+
 
 
 
