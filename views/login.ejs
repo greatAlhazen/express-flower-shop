@@ -3,21 +3,23 @@
 </head>
 <body>
 
+    <%- include('partials/flash')  %> 
+    
     <section class="formContainer">
-        <form action="">
+        <form action="/auth/login" method="POST">
         <h1 class="formContainerHeading">Sign In</h1>
         <div class="formContainerBox">
-            <input type="text" placeholder="please enter your Username...." id="username">
+            <input type="text" name="username" placeholder="please enter your Username...." autocomplete="off" id="username">
             <span class="formContainerBoxInfo" id="nameError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="password" placeholder="please enter your Password....." id="password">
+            <input type="password" name="password" placeholder="please enter your Password....." autocomplete="off" id="password">
             <span class="fas fa-eye"></span>
             <span class="fas fa-eye-slash"></span>
             <span class="formContainerBoxInfo" id="passwordError"></span>
         </div>
         <span class="formContainerBoxInfo" id="commonError"></span>
-        <a href="" class="btn" id="submitButton" onclick="return validateForm()">Login</a>
+        <button class="btn" id="submitButton" onclick="return validateForm()">Login</button>
         <a href="" class="formContainerRedirect">Or <span>Register</span></a>
     </form>
     </section>

@@ -45,6 +45,7 @@ a{
     color:var(--honeydew);
     border:none;
     outline:none;
+    cursor: pointer;
 }
 
 .btn:hover{
@@ -207,6 +208,38 @@ header{
 
 
 
+
+/* flash styles */
+
+.messageContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:35rem;
+    height:max-content;
+    background-color:var(--color);
+    font-size:1.6rem;
+    padding:0 1rem;
+    position: relative;
+    margin:2rem;
+    z-index: 1100;
+}
+
+.messages{
+    display: flex;
+    align-items: center;
+    gap:1.6rem;
+}
+
+.messages i{
+    color:var(--honeydew);
+}
+
+#close{
+    align-self: flex-start;
+    color:var(--honeydew);
+    cursor: pointer;
+}
 
 
 

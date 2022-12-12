@@ -1,0 +1,21 @@
+<% if(success && success.length) {%>
+    <div class="messageContainer" style="--color:#198754;">
+        <div class="messages">
+        <i class="fa-solid fa-thumbs-up"></i>
+        <span><%= success  %> </span>
+    </div>
+        <i class="fas fa-close" id="close"></i>
+    </div>
+    <% } %>
+
+<% if(error && error.length) {%>
+    <div class="messageContainer" style="--color:#ff3333;">
+        <div class="messages">
+        <i class="fa-solid fa-thumbs-up"></i>
+        <span><%= error  %> </span>
+    </div>
+        <i class="fas fa-close" id="close"></i>
+    </div>
+<% } %>
+
+<script src="/scripts/flash.js"></script>

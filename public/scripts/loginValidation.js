@@ -11,10 +11,6 @@ username.addEventListener('keyup',function(){
         nameError.innerHTML = 'username is required';
         validateName = false;
         nameError.style.color = 'var(--main-color)'
-    }else if(!(username.value.match('^[A-Za-z0-9]{2,18}$'))){
-        nameError.innerHTML = 'username character between 2 and 18';
-        validateName = false;
-        nameError.style.color = 'var(--main-color)'
     }else{
         nameError.innerHTML = 'valid';
         nameError.style.color = 'var(--secondary-color)';
@@ -29,10 +25,6 @@ password.addEventListener('keyup',function(){
     let passwordError = document.querySelector('#passwordError');
     if (password.value.length == 0){
         passwordError.innerHTML = 'password is required';
-        validatePassword = false;
-        passwordError.style.color = 'var(--main-color)'
-    }else if(!(password.value.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@[-`{-~]).{6,64}$'))){
-        passwordError.innerHTML = 'password should be 6-20 characters and include 1 letter,1 number and 1 special character';
         validatePassword = false;
         passwordError.style.color = 'var(--main-color)'
     }else{

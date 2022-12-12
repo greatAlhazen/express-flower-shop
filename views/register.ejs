@@ -3,31 +3,34 @@
 </head>
 <body>
 
+    <%- include('partials/flash')  %> 
+
+    
     <section class="formContainer">
-        <form action="">
+        <form action="/auth/register" method="POST">
         <h1 class="formContainerHeading">Register</h1>
         <div class="formContainerBox">
-            <input type="text" placeholder="please enter your Username...." id="username">
+            <input type="text" name="username" placeholder="please enter your Username...." autocomplete="off" id="username">
             <span class="formContainerBoxInfo" id="nameError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="email" placeholder="please enter your Email...." id="email">
+            <input type="email" name="email" placeholder="please enter your Email...." autocomplete="off" id="email">
             <span class="formContainerBoxInfo" id="emailError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="password" placeholder="please enter your Password....." id="password">
+            <input type="password" name="password" placeholder="please enter your Password....." autocomplete="off" id="password">
             <span class="fas fa-eye"></span>
             <span class="fas fa-eye-slash"></span>
             <span class="formContainerBoxInfo" id="passwordError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="password" placeholder="please enter your Password Again...." id="againPassword">
+            <input type="password" placeholder="please enter your Password Again...." autocomplete="off" id="againPassword">
             <span class="fas fa-eye" id="open"></span>
             <span class="fas fa-eye-slash" id="close"></span>
             <span class="formContainerBoxInfo" id="againError"></span>
         </div>
         <span class="formContainerBoxInfo" id="commonError"></span>
-        <a href="" class="btn" id="submitButton" onclick="return validateForm()">Register</a>
+        <button class="btn" id="submitButton" onclick="return validateForm()">Register</button>
         <a href="" class="formContainerRedirect">Or <span>Login</span></a>
     </form>
     </section>
