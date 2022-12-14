@@ -5,6 +5,7 @@ const authRoute = require('./routes/auth');
 const database = require('./config/database');
 const flash = require('connect-flash');
 const session = require('express-session');
+const userRoute = require('./routes/user');
 
 
 
@@ -50,6 +51,7 @@ app.set('views',path.join(__dirname,'views'));
 
 app.use('/home',homeRoute);
 app.use('/auth',authRoute);
+app.use('/user',userRoute);
 
 
 

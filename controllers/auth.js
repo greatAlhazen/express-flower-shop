@@ -37,11 +37,17 @@ module.exports.postLogin = async(req,res,next) =>{
 
     if(!correctPassword) return next(createError(404,'wrong credentials'));
 
-    const token = jwt.sign({id:user.id,admin:user.isAdmin},process.env.JWT);
+    const token = jwt.sign({id:user._id,admin:user.isAdmin},process.env.JWT);
 
     req.session.token = token;
 
     req.flash('success','Successfuly Login Welcome')
     
     res.status(201).redirect('/home/');
+}
+
+module.exports.logout = (req,res,next) =>{
+    req.session.token = null;
+    req.flash('success','GoodBye See You Later');
+    res.status(302).redirect('/home/')
 }

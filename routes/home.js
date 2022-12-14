@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { homePage } = require('../controllers/home');
+const home = require('../controllers/home');
+const getUser = require('../utils/getUser');
 
-router.route('/').get(homePage);
+router.route('/').get(getUser.jwtVerify,getUser.sendUser,home.homePage);
 
 module.exports = router;

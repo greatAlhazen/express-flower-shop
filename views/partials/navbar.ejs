@@ -4,12 +4,15 @@
         <h1 class="logoTitle">FlowerSs</h1>
     </div>
     <ul class="navList">
-        <li class="navListItem"><a class='active' id="links">Home</a></li>
-        <li class="navListItem"><a href="#categories" id="links">Categories</a></li>
+        <li class="navListItem"><a href="/home/" class='active' id="links">Home</a></li>
+        <li class="navListItem"><a href="/home/#categories" id="links">Categories</a></li>
         <li class="navListItem"><a id="links">Products</a></li>
         <li class="navListItem"><a id="links">Featured</a></li>
         <li class="navListItem"><a id="links">Contact</a></li>
-        <li class="navListItem"><a class="btn">Login</a></li>
+        <% if(!username){ %>
+            <li class="navListItem"><a href="/auth/login" class="btn">Login</a></li>
+         <% } %>
+
     </ul>
     <div class="user-sec">
         <div class="badge">
@@ -17,19 +20,33 @@
             <span>0</span>
         </div>
         <div class="fas fa-bars" id="menu"></div>
+        <% if(username && username.length) {%>
         <img src="/images/user.jpg" class="userImage" id="userImage" alt="userImage">
         <div class="userInfo">
             <div class="userInfoTop">
             <img src="/images/user.jpg" alt="userImage">
-            <h4 class="userInfoTopTitle">Username</h4>
+            <h4 class="userInfoTopTitle"><%= username  %> </h4>
         </div>
         <ul class="userInfoLinks"> 
-            <li><a><i class="fa-solid fa-user-tie"></i>Edit Profile</a></li>
+            <li><a href="/user/update/<%= id %> "><i class="fa-solid fa-user-tie"></i>Edit Profile</a></li>
+            <% if(isAdmin) {%>
             <li><a><i class="fa-solid fa-bars-progress"></i>Dashboard</a></li>
+            <% } %>
             <li><a><i class="fa-solid fa-gear"></i>Settings</a></li>
             <li><a><i class="fa-solid fa-basket-shopping"></i>My Cart</a></li>
+            <li>
+            <form action="/auth/logout" class="userInfoLinksLogout" method="POST">
+                <button >
+                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Logout
+                </button>    
+        </form>
+        </li>
+
+
     </ul>
 </div>
+<% } %>
     </div>
 </header>
 

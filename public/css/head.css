@@ -8,6 +8,8 @@
     --vampire-black:#080808;
     --box-shadow:0 3px 5px rgba(0,0,0,0.7);
     --border:2px solid rgba(0,0,0,0.4);
+    --dusty-rose:#c29591;
+    --maaron-brown:#703f37;
 }
 
 *{
@@ -47,6 +49,17 @@ a{
     outline:none;
     cursor: pointer;
 }
+
+.btn-2{
+    padding:2rem;
+    margin: 0 auto;
+    border:none;
+    outline: none;
+    background-color: var(--main-color);
+    font-size:2rem;
+    cursor: pointer;
+}
+
 
 .btn:hover{
     transform: translateY(.2rem);
@@ -191,7 +204,8 @@ header{
     padding:2rem 0;
 }
 
-.userInfoLinks li a{
+.userInfoLinks li a,
+.userInfoLinksLogout button{
     display: flex;
     align-items: center;
     gap:1rem;
@@ -199,7 +213,15 @@ header{
     transition: .3s;
 }
 
-.userInfoLinks li a:hover{
+.userInfoLinksLogout button{
+    border:none;
+    outline:none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.userInfoLinks li a:hover,
+.userInfoLinksLogout button:hover{
     padding:1rem;
     border: var(--border);
     border-radius: 2rem;

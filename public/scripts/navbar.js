@@ -24,6 +24,6 @@ allLinks.forEach((item) =>{
 const userProfile = document.querySelector('#userImage');
 const userInfo = document.querySelector('.userInfo');
 
-userProfile.addEventListener('click',() =>{
+userProfile?.addEventListener('click',() =>{
     userInfo.classList.toggle('active');
 })
