@@ -22,9 +22,11 @@ module.exports.sendUser = async (req, res, next) => {
         const {password,username,isAdmin} = user._doc;
         req.username = username;
         req.isAdmin = isAdmin;
+        id = req.user.id
       } else {
         req.username = undefined;
         req.isAdmin = undefined;
+        id = undefined
       }
     next();
 };

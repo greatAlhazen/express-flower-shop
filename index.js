@@ -14,6 +14,7 @@ const userRoute = require('./routes/user');
 // Handling Uncaught Error
 process.on('uncaughtException',(err) =>{
     console.log(`error is: ${err.message}`);
+    console.log(err.stack);
     console.log('shutting down server');
     process.exit(1);
 })

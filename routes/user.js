@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const user = require('../controllers/user');
+const verify = require('../utils/verifyToken');
 
-router.route('/update').get(user.getUpdatePage);
+router.route('/update/:id').get(verify.verifyToken,verify.verifyAndAuthorize,user.getUpdatePage);
 
 
 module.exports = router;
