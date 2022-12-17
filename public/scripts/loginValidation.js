@@ -1,15 +1,14 @@
 
 const username = document.querySelector('#username');
-let validateName;
+let validateName = false;
 const password = document.querySelector('#password');
-let validatePassword;
+let validatePassword = false;
 const submitButton = document.querySelector('#submitButton')
 
 username.addEventListener('keyup',function(){
     let nameError = document.querySelector('#nameError');
     if (username.value.length == 0){
         nameError.innerHTML = 'username is required';
-        validateName = false;
         nameError.style.color = 'var(--main-color)'
     }else{
         nameError.innerHTML = 'valid';
@@ -25,7 +24,6 @@ password.addEventListener('keyup',function(){
     let passwordError = document.querySelector('#passwordError');
     if (password.value.length == 0){
         passwordError.innerHTML = 'password is required';
-        validatePassword = false;
         passwordError.style.color = 'var(--main-color)'
     }else{
         passwordError.innerHTML = 'valid';

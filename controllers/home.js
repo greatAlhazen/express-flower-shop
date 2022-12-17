@@ -5,5 +5,7 @@ module.exports.homePage = async(req,res,next) =>{
         username:req.username,
         isAdmin:req.isAdmin,
         id,
+        email: req.email,
+        image,
     })
 }

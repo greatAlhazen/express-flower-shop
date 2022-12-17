@@ -21,10 +21,10 @@
         </div>
         <div class="fas fa-bars" id="menu"></div>
         <% if(username && username.length) {%>
-        <img src="/images/user.jpg" class="userImage" id="userImage" alt="userImage">
+        <img src=<%= image  %>  class="userImage" id="userImage" alt="userImage">
         <div class="userInfo">
             <div class="userInfoTop">
-            <img src="/images/user.jpg" alt="userImage">
+            <img src=<%= image  %>  alt="userImage">
             <h4 class="userInfoTopTitle"><%= username  %> </h4>
         </div>
         <ul class="userInfoLinks"> 

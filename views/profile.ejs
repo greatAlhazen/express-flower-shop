@@ -5,42 +5,27 @@
 
 
     <section class="userPage">
-        <form class="formContainer">
+        <form class="formContainer" action="/user/update/<%= id  %> " method="POST" enctype="multipart/form-data">
             <h1 class="formContainerTitle">Profile</h1>
-            <input type="file" hidden id="file" accept="image/*">
+            <input type="file" name="image" hidden id="file" accept="image/*" value=<%= image  %> >
          <div class="imageUpload" data-img="">
             <i class="fa-solid fa-file-image"></i>
+            <img src=<%=image  %>  alt="">
         </div>
         <button type="button" class="btn-2 imageBtn">Choose Image</button>
         <div class="formContainerBox">
-            <input type="text" name="username" autocomplete="off" id="username" required>
+            <input type="text" name="username" autocomplete="off" id="username" value=<%= username  %> >
             <h4>Your Username</h4>
             <span class="formContainerBoxInfo" id="nameError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="email" name="email"  autocomplete="off" id="email" required>
+            <input type="email" name="email"  autocomplete="off" id="email" value=<%= email  %> >
             <h4>Your Email</h4>
             <span class="formContainerBoxInfo" id="emailError"></span>
         </div>
-        <div class="formContainerBox">
-            <input type="password" name="password"  autocomplete="off" id="password" required>
-            <span class="fas fa-eye"></span>
-            <span class="fas fa-eye-slash"></span>
-            <h4>Your Password</h4>
-            <span class="formContainerBoxInfo" id="passwordError"></span>
-        </div>
-        <div class="formContainerBox">
-            <input type="password" autocomplete="off" id="againPassword" required>
-            <span class="fas fa-eye"></span>
-            <span class="fas fa-eye-slash"></span>
-            <h4>Again Password</h4>
-            <span class="formContainerBoxInfo" id="againError"></span>
-        </div>
-        <button class="btn-2" id="submitButton" onclick="return validateForm()">update</button>
+        <button class="btn-2" id="submitButton" onclick="return validateForm()">Update</button>
     </form>
     </section>
 
     <script src="/scripts/profile.js"></script>
-    <script src="/scripts/form.js"></script>
-    <script src="/scripts/registerValidation.js"></script>
     <%- include('partials/end')  %> 

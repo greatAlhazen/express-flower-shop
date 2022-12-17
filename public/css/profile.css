@@ -78,15 +78,9 @@
 
 .formContainerBox h4{
     position: absolute;
-    top:0;
+    top:-3rem;
     left:0;
     font-size:1.6rem;
-}
-
-.formContainerBox input:focus ~ h4,
-.formContainerBox input:valid ~ h4
-{
-    top:-3rem;
 }
 
 

@@ -23,7 +23,13 @@ const UserSchema = new mongoose.Schema({
         default:false,
     },
     picture:{
-        type:String,
+        url: {
+            type:String,
+            default:'/images/person.png'
+        },
+        filename: {
+            type:String,
+        }
     }
 },{timestamps:true});
 
