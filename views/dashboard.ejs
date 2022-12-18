@@ -1,0 +1,106 @@
+<%- include('partials/head')  %>
+<link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+    <section class="adminMain">
+        <div class="adminSidebar">
+            <div class="adminImage">
+                <img src="" alt="adminLogo" class="admin">
+            </div>
+            <h1>Username</h1>
+            <div class="line"></div>
+                <div class="links">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa-solid fa-house"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa-solid fa-gifts"></i>
+                                <span>Products</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa-regular fa-circle-user"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <span>Add Pro</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+        <div class="rightSide">
+            <div class="adminNavbar">
+                <h1 class="adminNavbarTitle">Admin Panel</h1>
+                <div class="adminNavbarActions">
+                    <form action="">
+                        <button class="adminNavbarLogout">Logout</button>
+                    </form>
+                    <img src="/images/logo.png" alt="logo" class="adminNavbarLogo">
+                    <div class="fas fa-bars" id="adminNavbarMenu"></div>
+                </div>
+            </div>
+            <div class="users">
+                <table>
+                    <thead>
+                        <th>Images</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <tbody>
+                            <tr>
+                                <td data-label="Image">
+                                    <img src="" alt="" class="userImages">
+                                </td>
+                                <td data-label="Username">username</td>
+                                <td data-label="Email">Email</td>
+                                <td>Edit</td>
+                                <td>Delete</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Image">
+                                    <img src="" alt="" class="userImages">
+                                </td>
+                                <td data-label="Username">username</td>
+                                <td data-label="Email">Email</td>
+                                <td>Edit</td>
+                                <td>Delete</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Image">
+                                    <img src="" alt="" class="userImages">
+                                </td>
+                                <td data-label="Username">username</td>
+                                <td data-label="Email">Email</td>
+                                <td>Edit</td>
+                                <td>Delete</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Image">
+                                    <img src="images/adminIcon.png" alt="" class="userImages">
+                                </td>
+                                <td data-label="Username">username</td>
+                                <td data-label="Email">Email</td>
+                                <td>Edit</td>
+                                <td>Delete</td>
+                            </tr>
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <script src="/scripts/dashboard.js"></script>
+    <%- include('partials/end')  %> 

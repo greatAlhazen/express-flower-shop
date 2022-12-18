@@ -1,0 +1,279 @@
+.adminMain{
+    display:flex;
+}
+
+.adminSidebar{
+    width:25rem;
+    height:100vh;
+    border-right:1px solid var(--creme);
+    background-color: var(--creme);
+    position: fixed;
+    z-index:1000;
+}
+
+.adminImage{
+    height:12rem;
+    width:12rem;
+    text-align: center;
+    border:1rem solid rgba(0,0,0,0.4);
+    border-radius:50%;
+    position: relative;
+    margin:2rem auto;
+}
+
+.adminImage img{
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+}
+
+.adminSidebar h1{
+    text-align: center;
+    font-size:2.5rem;
+}
+
+.adminSidebar .line{
+    width:100%;
+    height:.2rem;
+    background-color: var(--vampire-black);
+}
+
+.adminSidebar .links{
+    inset:6rem 0 4rem 2rem;
+    height:calc(100vh - 6.2rem);
+    display: flex;
+
+}
+
+.adminSidebar .links ul{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    gap:5rem;
+    margin-top:3rem;
+}
+
+.adminSidebar .links ul li{
+    display:flex;
+    align-items: center;
+    transition: all .5s;
+    margin-left:2rem;
+}
+
+.adminSidebar .links ul li:hover{
+    background-color:var(--hard-creme);
+    border:var(--border);
+    padding:3px;
+    border-radius: 5px;
+}
+
+.adminSidebar .links ul i{
+    font-size:1.9rem;
+}
+
+
+.adminSidebar .links ul li span{
+    font-size:1.6rem;
+    margin-left:.6rem;
+}
+
+.rightSide{
+    width:100%;
+    margin-left:25rem;
+    height:6.2rem;
+    padding:1rem 2rem;
+}
+
+.adminNavbar{
+    height:4rem;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index:999;
+}
+
+
+.adminNavbarActions{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+}
+
+.adminNavbarActions.active{
+    position: fixed;
+    top:3rem;
+    right:1rem;
+    z-index:999;
+}
+
+
+.adminNavbarLogout{
+    padding:1rem 3rem;
+    background-color: var(--soft-white);
+    color:var(--vampire-black);
+    cursor: pointer;
+}
+
+.adminNavbarLogout:hover,
+.adminNavbarLogout.active{
+    color:var(--soft-white);
+    background-color: var(--vampire-black);
+}
+
+
+.adminNavbarLogo{
+    width:5rem;
+    height:5rem;
+}
+
+#adminNavbarMenu{
+    font-size:2rem;
+    cursor: pointer;
+    display:none;
+}
+
+
+.adminNavbarTitle{
+    font-size:4rem;
+}
+
+
+.users{
+    padding:2rem;
+}
+
+table{
+    width: 100%;
+    border: var(--border);
+    border-radius:5px;
+}
+
+table td,table th{
+    padding:1.3rem 2rem;
+    text-align: center;
+    font-size:1.6rem;
+}
+
+table th{
+    border: var(--border);
+}
+
+table th{
+    background-color: #DDAF94;
+}
+
+table td:nth-child(4){
+    color: var(--secondary-color);
+    text-shadow: 0 3px 5px var(--secondary-color);
+    cursor: pointer;
+}
+
+table td:nth-child(5){
+    color: var(--main-color);
+    text-shadow: 0 3px 5px var(--main-color);
+    cursor: pointer;
+}
+
+table tbody tr:nth-child(even){
+    background-color: var(--table-gray);
+}
+
+
+
+.userImages{
+    width:3rem;
+    height:3rem;
+    border-radius: 50%;
+}
+
+.customElement1{
+    color:var(--secondary-color);
+    cursor: pointer;
+}
+
+.customElement2{
+    color:var(--main-color);
+    cursor: pointer;
+}
+
+@media (max-width:768px) {
+
+    .adminSidebar{
+        display: none;
+        position: fixed;
+        top:0;
+        left:0;
+    }
+
+    .adminSidebar.active{
+        display: block;
+        flex:5;
+    }
+
+    .rightSide{
+        margin-left:0;
+    }
+
+    .adminNavbar{
+        padding-top:2rem;
+    }
+
+    .adminNavbarTitle{
+        font-size:2rem;
+    }
+
+    .adminNavbarLogo{
+        display: none;
+    }
+
+    #adminNavbarMenu{
+        display:block;
+    }
+
+
+    table{
+        border:none;
+    }
+
+
+    table thead{
+        display:none;
+    }
+
+    table td{
+        border: var(--border);
+    }
+
+    table, table tbody, table tr , table td{
+        display: block;
+        width:100%;
+    }
+
+    table tr{
+        margin-bottom:1.5rem;
+    }
+
+    table td{
+        text-align: right;
+        position: relative;
+    }
+
+    table td::before{
+        content:attr(data-label);
+        position: absolute;
+        left:0;
+        font-weight:700;
+        padding-left:1.5rem;
+    }
+
+    
+}
+
+
+
+@media (max-width:300px) {
+    table td::before{
+        display: none;
+    }
+}
