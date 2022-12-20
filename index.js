@@ -6,6 +6,8 @@ const database = require('./config/database');
 const flash = require('connect-flash');
 const session = require('express-session');
 const userRoute = require('./routes/user');
+const adminRoute = require('./routes/admin');
+const methodOverride = require('method-override');
 
 
 
@@ -32,6 +34,9 @@ const app = express();
 // request data handling
 app.use(express.urlencoded({ extended: true }));
 
+// method override configuration
+app.use(methodOverride('_method'));
+
 // session configuration
 const sessionOptions = {secret:process.env.SESSION_SECRET,resave: false,
 saveUninitialized: true}
@@ -53,6 +58,7 @@ app.set('views',path.join(__dirname,'views'));
 app.use('/home',homeRoute);
 app.use('/auth',authRoute);
 app.use('/user',userRoute);
+app.use('/admin',adminRoute);
 
 
 

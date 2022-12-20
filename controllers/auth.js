@@ -37,7 +37,7 @@ module.exports.postLogin = async(req,res,next) =>{
 
     if(!correctPassword) return next(createError(404,'wrong credentials'));
 
-    const token = jwt.sign({id:user._id,admin:user.isAdmin},process.env.JWT);
+    const token = jwt.sign({id:user._id, admin:user.isAdmin},process.env.JWT);
 
     req.session.token = token;
 

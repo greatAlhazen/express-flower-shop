@@ -10,7 +10,9 @@ const getUser = require('../utils/getUser');
 const upload = multer({ storage: storage});
 
 router.route('/update/:id').get(getUser.jwtVerify,getUser.sendUser,verify.verifyToken,verify.verifyAndAuthorize,user.getUpdatePage)
-.post(upload.single('image'),catchAsync(user.postUpdate));
+.put(upload.single('image'),catchAsync(user.postUpdate));
+
+router.route('/delete/:id').delete(catchAsync(user.deleteUser))
 
 
 module.exports = router;

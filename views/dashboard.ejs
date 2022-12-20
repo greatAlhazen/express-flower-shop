@@ -6,9 +6,9 @@
     <section class="adminMain">
         <div class="adminSidebar">
             <div class="adminImage">
-                <img src="" alt="adminLogo" class="admin">
+                <img src=<%= image  %>  alt="adminLogo" class="admin">
             </div>
-            <h1>Username</h1>
+            <h1><%= username %> </h1>
             <div class="line"></div>
                 <div class="links">
                     <ul>
@@ -43,7 +43,7 @@
             <div class="adminNavbar">
                 <h1 class="adminNavbarTitle">Admin Panel</h1>
                 <div class="adminNavbarActions">
-                    <form action="">
+                    <form action="/auth/logout" method="POST">
                         <button class="adminNavbarLogout">Logout</button>
                     </form>
                     <img src="/images/logo.png" alt="logo" class="adminNavbarLogo">
@@ -57,42 +57,24 @@
                         <th>Username</th>
                         <th>Email</th>
                         <tbody>
-                            <tr>
-                                <td data-label="Image">
-                                    <img src="" alt="" class="userImages">
-                                </td>
-                                <td data-label="Username">username</td>
-                                <td data-label="Email">Email</td>
-                                <td>Edit</td>
-                                <td>Delete</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Image">
-                                    <img src="" alt="" class="userImages">
-                                </td>
-                                <td data-label="Username">username</td>
-                                <td data-label="Email">Email</td>
-                                <td>Edit</td>
-                                <td>Delete</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Image">
-                                    <img src="" alt="" class="userImages">
-                                </td>
-                                <td data-label="Username">username</td>
-                                <td data-label="Email">Email</td>
-                                <td>Edit</td>
-                                <td>Delete</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Image">
-                                    <img src="images/adminIcon.png" alt="" class="userImages">
-                                </td>
-                                <td data-label="Username">username</td>
-                                <td data-label="Email">Email</td>
-                                <td>Edit</td>
-                                <td>Delete</td>
-                            </tr>
+                            <% for(let user of users) { %>
+                                <tr>
+                                    <td data-label="Image">
+                                        <img src=<%= user.picture.url  %>  alt="userImages" class="userImages" >
+                                    </td>
+                                    <td data-label="Username"><%= user.username  %> </td>
+                                    <td data-label="Email"><%= user.email %> </td>
+                                    <td>
+                                        <a href="/user/update/<%= user._id %>" class="btn-3 customElement1">Edit</a>
+                                    </td>
+                                    <td>
+                                        <form action="/user/delete/<%= user._id %>?_method=DELETE" method="Post">
+                                        <button class="btn-3 customElement2">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                
+                                <% } %>
                         </tbody>
                     </thead>
                 </table>

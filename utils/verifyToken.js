@@ -21,7 +21,7 @@ module.exports.verifyToken = (req,res,next) =>{
 
 module.exports.verifyAndAuthorize = (req,res,next) =>{
    this.verifyToken(req,res,() =>{
-        if(req.user.id === req.params.id || req.user.isAdmin){
+        if(req.user.id === req.params.id || req.user.admin){
             next();
         }else{
             req.flash('error','You Are Not Authorized');
@@ -32,7 +32,7 @@ module.exports.verifyAndAuthorize = (req,res,next) =>{
 
 module.exports.verifyAdmin = (req,res,next) =>{
     this.verifyToken(req,res,() =>{
-        if(req.user.isAdmin){
+        if(req.user.admin){
             next()
         }else{
             req.flash('error','You Are Not Authorized');

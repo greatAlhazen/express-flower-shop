@@ -5,11 +5,10 @@
 
 
     <section class="userPage">
-        <form class="formContainer" action="/user/update/<%= id  %> " method="POST" enctype="multipart/form-data">
+        <form class="formContainer" action="/user/update/<%= id  %>?_method=PUT" method="POST" enctype="multipart/form-data">
             <h1 class="formContainerTitle">Profile</h1>
             <input type="file" name="image" hidden id="file" accept="image/*" value=<%= image  %> >
          <div class="imageUpload" data-img="">
-            <i class="fa-solid fa-file-image"></i>
             <img src=<%=image  %>  alt="">
         </div>
         <button type="button" class="btn-2 imageBtn">Choose Image</button>

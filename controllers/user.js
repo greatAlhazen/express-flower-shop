@@ -34,3 +34,8 @@ module.exports.postUpdate = async(req,res,next) =>{
         res.status(201).redirect('/home/');
 
 }
+
+module.exports.deleteUser = async(req,res,next) =>{
+    await User.findByIdAndDelete(req.params.id);
+    res.status(201).redirect('/admin/');
+}
