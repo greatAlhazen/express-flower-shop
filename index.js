@@ -52,9 +52,11 @@ app.use((req,res,next) =>{
 
 app.use(express.static(path.join(__dirname,'public')));
 
+ // ejs configuration
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
+ // routes configuration
 app.use('/home',homeRoute);
 app.use('/auth',authRoute);
 app.use('/user',userRoute);
@@ -83,6 +85,7 @@ app.use((err,req,res,next) =>{
     })
 })
 
+ // server up
 const server = app.listen(port,() =>{
     console.log(`server running on ${port}`);
 });

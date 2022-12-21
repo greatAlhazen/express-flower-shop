@@ -7,45 +7,65 @@ const jwt = require('jsonwebtoken');
 
 
 
+// login page
 module.exports.getlogin = (req,res) =>{
     res.render('login');
 }
 
+// register page
 module.exports.getRegister = (req,res) =>{
     res.render('register');
 }
 
+// register configuration
 module.exports.postRegister =async (req,res,next) =>{
     try{
-        const newUser = new User(req.body);
+        const {username,email,password} = req.body.user;
+        const newUser = new User({
+            username,
+            email,
+            password,
+        });
         
         await newUser.save();
         req.flash('success','Successfully Sign Up');
         res.status(201).redirect('/auth/login');
         
+        // register error handling
     }catch(err){ 
         req.flash('error',err.message)
         res.status(302).redirect('/auth/register');
     }
 }
 
+// login configuration
 module.exports.postLogin = async(req,res,next) =>{
     const user = await User.findOne({username:req.body.username});
-    if(!user) return next(createError(404,'User Not Found'));
+   
+    // user not found
+    if(!user) {
+        req.flash('error','User Not Found');
+        res.status(302).redirect('/auth/login');
+    }else{
+        // password incorrect
+        const correctPassword = bcrypt.compareSync(req.body.password,user.password);
+        if(!correctPassword){
+            req.flash('error','Wrong Credentials');
+            res.status(302).redirect('/auth/login');
+        }else{
+             // everything okey
+            const token = jwt.sign({id:user._id, admin:user.isAdmin},process.env.JWT);
+
+             req.session.token = token;
+
+            req.flash('success','Successfuly Login Welcome')
     
-    const correctPassword = bcrypt.compareSync(req.body.password,user.password);
-
-    if(!correctPassword) return next(createError(404,'wrong credentials'));
-
-    const token = jwt.sign({id:user._id, admin:user.isAdmin},process.env.JWT);
-
-    req.session.token = token;
-
-    req.flash('success','Successfuly Login Welcome')
-    
-    res.status(201).redirect('/home/');
+            res.status(201).redirect('/home/');
+        };
+    };    
 }
 
+ // logout configuration
 module.exports.logout = (req,res,next) =>{
     req.session.token = null;
     req.flash('success','GoodBye See You Later');

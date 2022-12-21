@@ -1,0 +1,31 @@
+<%- include('partials/head')  %>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+
+    <%- include('partials/flash')  %> 
+    
+    <section class="formContainer">
+        <form action="/user/change/<%= id  %>?_method=PUT" method="POST">
+        <h1 class="formContainerHeading">Change Password</h1>
+        <div class="formContainerBox">
+            <input type="password" name="oldPassword" placeholder="please enter your old password...." autocomplete="off" id="oldPassword">
+            <span class="fas fa-eye-slash"></span>
+            <span class="fas fa-eye"></span>
+            <span class="formContainerBoxInfo" id="oldError"></span>
+        </div>
+        <div class="formContainerBox">
+            <input type="password" name="newPassword" placeholder="please enter your new Password....." autocomplete="off" id="password">
+            <span class="fas fa-eye-slash"></span>
+            <span class="fas fa-eye"></span>
+            <span class="formContainerBoxInfo" id="passwordError"></span>
+        </div>
+        <span class="formContainerBoxInfo" id="commonError"></span>
+        <button class="btn" id="submitButton" onclick="return validateForm()">Change</button>
+        <a href="/home/" class="formContainerRedirect"><span>Cancel</span></a>
+    </form>
+    </section>
+
+    <script src="/scripts/form.js"></script>
+    <script src="/scripts/changePasswd.js"></script>
+    <%- include('partials/end')  %> 

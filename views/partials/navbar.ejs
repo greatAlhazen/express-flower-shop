@@ -32,8 +32,8 @@
             <% if(isAdmin) {%>
             <li><a href="/admin/"><i class="fa-solid fa-bars-progress"></i>Dashboard</a></li>
             <% } %>
-            <li><a><i class="fa-solid fa-gear"></i>Settings</a></li>
             <li><a><i class="fa-solid fa-basket-shopping"></i>My Cart</a></li>
+            <li><a href="/user/change/<%= id  %> " ><i class="fa-solid fa-lock"></i>Change Password</a></li>
             <li>
             <form action="/auth/logout" class="userInfoLinksLogout" method="POST">
                 <button >

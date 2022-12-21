@@ -2,7 +2,7 @@ const eyeIcons = document.querySelectorAll('.formContainerBox .fas');
 
 eyeIcons.forEach((item) =>{
     item.addEventListener('click',function(){
-        if(item.classList.contains('fa-eye-slash')){
+        if(item.classList.contains('fa-eye')){
             let inputElement = item.previousElementSibling.previousElementSibling
             inputElement.type = 'password';
             item.style.display = 'none';

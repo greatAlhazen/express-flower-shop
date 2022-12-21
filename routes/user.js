@@ -12,7 +12,10 @@ const upload = multer({ storage: storage});
 router.route('/update/:id').get(getUser.jwtVerify,getUser.sendUser,verify.verifyToken,verify.verifyAndAuthorize,user.getUpdatePage)
 .put(upload.single('image'),catchAsync(user.postUpdate));
 
-router.route('/delete/:id').delete(catchAsync(user.deleteUser))
+router.route('/delete/:id').delete(verify.verifyToken,verify.verifyAndAuthorize,catchAsync(user.deleteUser));
+
+router.route('/change/:id').get(verify.verifyToken,verify.verifyAndAuthorize,user.changePasswordPage)
+.put(user.changePassword);
 
 
 module.exports = router;

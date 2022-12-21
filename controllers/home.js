@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+ // home page
 module.exports.homePage = async(req,res,next) =>{
     res.render('home',{
         username:req.username,

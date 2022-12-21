@@ -84,6 +84,9 @@ a{
     letter-spacing: .7rem;
 }
 
+
+/* navbar styles */
+
 header{
     font-family: 'Nunito', sans-serif;
     width:100%;
@@ -133,6 +136,7 @@ header{
 
 .badge{
     position: relative;
+    cursor: pointer;
 }
 
 .badge i{
@@ -196,6 +200,7 @@ header{
 
 .userInfoTopTitle{
     font-size:2rem;
+    text-transform: uppercase;
 }
 
 .userInfoLinks{

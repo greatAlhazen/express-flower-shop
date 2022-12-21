@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
+ // jsonwebtoken verify
 module.exports.jwtVerify =(req,res,next) =>{
     const token = req.session.token;
     if(!token){
@@ -16,6 +17,7 @@ module.exports.jwtVerify =(req,res,next) =>{
     next();
 }
 
+ // send user specified page
 module.exports.sendUser = async (req, res, next) => {
       if (req.user) {
         const user = await User.findById(req.user.id)

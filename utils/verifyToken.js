@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-
+ // jsonwebtoken verify
 module.exports.verifyToken = (req,res,next) =>{
     const token = req.session.token;
     if(!token){
@@ -19,6 +19,7 @@ module.exports.verifyToken = (req,res,next) =>{
     }
 };
 
+ // user authorization
 module.exports.verifyAndAuthorize = (req,res,next) =>{
    this.verifyToken(req,res,() =>{
         if(req.user.id === req.params.id || req.user.admin){
@@ -30,6 +31,7 @@ module.exports.verifyAndAuthorize = (req,res,next) =>{
     })
 };
 
+ // admin authorization
 module.exports.verifyAdmin = (req,res,next) =>{
     this.verifyToken(req,res,() =>{
         if(req.user.admin){
