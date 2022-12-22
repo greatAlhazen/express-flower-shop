@@ -12,19 +12,19 @@
 
 
 .formContainer{
-    max-height:100vh;
+    max-height: 100%;
     width:50rem;
     padding:2rem;
     background-color: rgba(255,255,255,.6);
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap:4rem;
+    gap:3rem;
 }
 
 .formContainerTitle{
     text-align: center;
-    font-size:4rem;
+    font-size:2.6rem;
 }
 
 .imageUpload{
@@ -55,11 +55,12 @@
 .imageBtn{
     padding:1rem;
     font-size:1.4rem;
+    cursor: pointer;
 }
 
 .formContainerBox{
     width:100%;
-    height:5rem;
+    height:3rem;
     position: relative;
 }
 

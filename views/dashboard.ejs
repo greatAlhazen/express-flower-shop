@@ -1,9 +1,12 @@
 <%- include('partials/head')  %>
+<link rel="stylesheet" href="/css/profile.css">
 <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body>
 
-    <section class="adminMain">
+
+<!-- admin sidebar -->
+    <section class="adminMain" id="adminMain">
         <div class="adminSidebar">
             <div class="adminImage">
                 <img src=<%= image  %>  alt="adminLogo" class="admin">
@@ -31,7 +34,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="#addProduct">
                                 <i class="fa-solid fa-circle-plus"></i>
                                 <span>Add Pro</span>
                             </a>
@@ -39,6 +42,9 @@
                     </ul>
                 </div>
         </div>
+
+
+        <!-- admin navbar -->
         <div class="rightSide">
             <div class="adminNavbar">
                 <h1 class="adminNavbarTitle">Admin Panel</h1>
@@ -50,6 +56,9 @@
                     <div class="fas fa-bars" id="adminNavbarMenu"></div>
                 </div>
             </div>
+
+
+            <!-- users table -->
             <div class="users">
                 <table>
                     <thead>
@@ -81,8 +90,48 @@
             </div>
         </div>
     </section>
+            
+    
+    <!-- add product -->
+    <section class="addProduct" id="addProduct">       
+        <form class="formContainer">
+            <h1 class="formContainerTitle">Add Product</h1>
+            <input type="file" name="image" hidden id="file" accept="image/*" >
+         <div class="imageUpload" data-img="">
+            <i class="fa-solid fa-file-image"></i>
+        </div>
+        <button type="button" class="imageBtn">Choose Image</button>
+        <div class="formContainerBox">
+            <input type="text" name="title" id="title" required>
+            <h4>Title</h4>
+            <span class="formContainerBoxInfo" id="titleError"></span>
+        </div>
+        <div class="formContainerTextarea">
+            <textarea name="desc" id="desc" required></textarea>
+            <h4>Description</h4>
+            <span class="formContainerBoxInfo" id="descError"></span>
+        </div>
+        <div class="formContainerBox">
+            <input type="text" name="price" id="price" required>
+            <h4>Price</h4>
+            <span class="formContainerBoxInfo" id="priceError"></span>
+        </div>
+        <div class="formContainerBoxSelect">
+            <select name="category" id="category" required>
+                <option value="annuals" selected>Annuals</option>
+                <option value="biennials">Biennials</option>
+                <option value="perennials">Perennials</option>
+            </select>
+        </div>
+        <button class="btn-3" id="submitButton" onclick="return validateForm()">Add</button>
+        <a href="#adminMain" class="fas fa-times" id="close"></a>
+    </form>
+
+</section>
     
 
 
     <script src="/scripts/dashboard.js"></script>
+    <script src="/scripts/addProValidation.js"></script>
+    <script src="/scripts/imageUpload.js"></script>
     <%- include('partials/end')  %> 
