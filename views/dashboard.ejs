@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body>
-
+    
 
 <!-- admin sidebar -->
     <section class="adminMain" id="adminMain">
@@ -93,8 +93,10 @@
             
     
     <!-- add product -->
-    <section class="addProduct" id="addProduct">       
-        <form class="formContainer">
+    
+    <section class="addProduct" id="addProduct">
+        <%- include('partials/flash')  %> 
+        <form class="formContainer" action="/product/add" method="POST">
             <h1 class="formContainerTitle">Add Product</h1>
             <input type="file" name="image" hidden id="file" accept="image/*" >
          <div class="imageUpload" data-img="">
@@ -102,29 +104,29 @@
         </div>
         <button type="button" class="imageBtn">Choose Image</button>
         <div class="formContainerBox">
-            <input type="text" name="title" id="title" required>
+            <input type="text" name="product[title]" id="title" >
             <h4>Title</h4>
             <span class="formContainerBoxInfo" id="titleError"></span>
         </div>
         <div class="formContainerTextarea">
-            <textarea name="desc" id="desc" required></textarea>
+            <textarea name="product[desc]" id="desc" ></textarea>
             <h4>Description</h4>
             <span class="formContainerBoxInfo" id="descError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="text" name="price" id="price" required>
+            <input type="text" name="product[price]" id="price">
             <h4>Price</h4>
             <span class="formContainerBoxInfo" id="priceError"></span>
         </div>
         <div class="formContainerBoxSelect">
-            <select name="category" id="category" required>
+            <select name="product[category]" id="category" required>
                 <option value="annuals" selected>Annuals</option>
                 <option value="biennials">Biennials</option>
                 <option value="perennials">Perennials</option>
             </select>
         </div>
-        <button class="btn-3" id="submitButton" onclick="return validateForm()">Add</button>
-        <a href="#adminMain" class="fas fa-times" id="close"></a>
+        <button class="btn-3" id="submitButton">Add</button>
+        <a href="#adminMain" class="fas fa-times" id="productClose"></a>
     </form>
 
 </section>

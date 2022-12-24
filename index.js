@@ -8,6 +8,7 @@ const session = require('express-session');
 const userRoute = require('./routes/user');
 const adminRoute = require('./routes/admin');
 const methodOverride = require('method-override');
+const productRoute = require('./routes/product')
 
 
 
@@ -61,6 +62,7 @@ app.use('/home',homeRoute);
 app.use('/auth',authRoute);
 app.use('/user',userRoute);
 app.use('/admin',adminRoute);
+app.use('/product',productRoute);
 
 
 

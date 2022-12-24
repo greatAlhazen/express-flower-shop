@@ -2,6 +2,8 @@ const title = document.querySelector('#title');
 let validateTitle = false;
 const desc = document.querySelector('#desc');
 let validateDesc = false;
+const price = document.querySelector('#price');
+let validatePrice = false;
 
 
 title.addEventListener('keyup',function(){
@@ -26,7 +28,7 @@ desc.addEventListener('keyup',function(){
     if(desc.value.length == 0){
         descError.innerHTML = 'Description is required';
         descError.style.color = 'var(--main-color)'
-    }else if(!(desc.value.match('^[A-Za-z0-9]{10,160}$'))){
+    }else if(!(desc.value.match('^[A-Za-z0-9 ]{10,160}$'))){
         descError.innerHTML = 'Description Character Between 10 and 160';
         descError.style.color = 'var(--main-color)'
     }else{
@@ -37,9 +39,26 @@ desc.addEventListener('keyup',function(){
 
 });
 
+price.addEventListener('keyup',function(){
+    let priceError = document.querySelector('#priceError');
+    console.log(descError)
+    if(price.value.length == 0){
+        priceError.innerHTML = 'Price is required';
+        descError.style.color = 'var(--main-color)'
+    }else if(!(price.value.match('^[0-9]{1,8}$'))){
+        priceError.innerHTML = 'Price Character Between 1 and 8';
+        priceError.style.color = 'var(--main-color)'
+    }else{
+        priceError.innerHTML = 'valid';
+        priceError.style.color = 'var(--secondary-color)';
+        validatePrice = true;
+    }
+
+});
+
 
 const validateForm = () =>{
-    if(!validateTitle || !validateDesc ){
+    if(!validateTitle || !validateDesc || !validatePrice ){
         let commonError = document.querySelector('#commonError');
         commonError.innerHTML = 'please fix all error and fill blank areas before submit';
         setTimeout(function(){commonError.style.display = 'none'},3000)
