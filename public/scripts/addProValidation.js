@@ -24,11 +24,11 @@ title.addEventListener('keyup',function(){
 
 desc.addEventListener('keyup',function(){
     let descError = document.querySelector('#descError');
-    console.log(descError)
+    console.log(descError);
     if(desc.value.length == 0){
         descError.innerHTML = 'Description is required';
         descError.style.color = 'var(--main-color)'
-    }else if(!(desc.value.match('^[A-Za-z0-9 ]{10,160}$'))){
+    }else if(!(desc.value.length > 10 && desc.value.length < 160)){
         descError.innerHTML = 'Description Character Between 10 and 160';
         descError.style.color = 'var(--main-color)'
     }else{

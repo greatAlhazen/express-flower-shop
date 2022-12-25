@@ -253,6 +253,7 @@ header{
     position: relative;
     margin:2rem;
     z-index: 1100;
+    position: absolute;
 }
 
 .messages{

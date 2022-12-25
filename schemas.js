@@ -12,8 +12,9 @@ module.exports.userSchema = joi.object({
 
 
  // product server side validation scheme
- module.exports.userSchema = joi.object({
+ module.exports.productSchema = joi.object({
     product: joi.object({
+        file:joi.string().required().error(new Error('image field cannot be empty')),
         title:joi.string().min(4).required().max(40).messages({
             'string.base': `title should be a type of text`,
             'string.empty': `title cannot be an empty field`,
@@ -28,17 +29,17 @@ module.exports.userSchema = joi.object({
             'string.max': `description should have a maximum length of 160`,
             'any.required': `description is a required field`,
           }),
-        password: joi.string().required().min(1).max(8).messages({
-            'number.base': `description should be a type of text`,
-            'number.empty': `description cannot be an empty field`,
-            'number.min': `description should have a minimum length of 1`,
-            'number.max': `description should have a maximum length of 8`,
-            'any.required': `description is a required field`,
+        price: joi.string().required().min(1).max(8).messages({
+            'number.base': `price should be a type of text`,
+            'number.empty': `price cannot be an empty field`,
+            'number.min': `price should have a minimum length of 1`,
+            'number.max': `price should have a maximum length of 8`,
+            'any.required': `price is a required field`,
           }),
         category: joi.string().required().valid('biennials','perennials','annuals').messages({
             'string.base':`category should be text`,
             'string.empty':`category cannot be empty`,
             'any.invalid': `category must be biennials- perennials or annuals`,
         }),
-    }).required()
-})
+    })
+});

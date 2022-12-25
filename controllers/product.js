@@ -4,14 +4,18 @@ module.exports.addProduct = async(req,res,next) =>{
     
     try{
         const {title,desc,price,category} = req.body.product;
-        const newProduct = new Product({
+        const image = {
+            url:req.file.path,
+            filename:req.file.filename}
+         const newProduct = new Product({
             title,
-            desc,
+            description: desc,
             price,
             category,
+            image,
         });
 
-        await newProduct.save();
+        await newProduct.save(); 
         req.flash('success','Successfully Create Product');
         res.status(302).redirect('/admin/');
     }catch(err){

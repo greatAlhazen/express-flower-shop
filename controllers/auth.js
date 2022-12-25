@@ -9,33 +9,51 @@ const jwt = require('jsonwebtoken');
 
 // login page
 module.exports.getlogin = (req,res) =>{
-    res.render('login');
+   if(!req.user){
+    res.render('login')
+    }else{
+        req.flash('error','you already logged in');
+        res.status(302).redirect('/home/');
+    }
+
 }
 
 // register page
 module.exports.getRegister = (req,res) =>{
-    res.render('register');
+    if(!req.user){
+        res.render('register')
+        }else{
+            req.flash('error','you already logged in');
+            res.status(302).redirect('/home/');
+        }
 }
 
 // register configuration
 module.exports.postRegister =async (req,res,next) =>{
-    try{
-        const {username,email,password} = req.body.user;
-        const newUser = new User({
-            username,
-            email,
-            password,
-        });
-        
-        await newUser.save();
-        req.flash('success','Successfully Sign Up');
-        res.status(201).redirect('/auth/login');
-        
-        // register error handling
-    }catch(err){ 
-        req.flash('error',err.message)
-        res.status(302).redirect('/auth/register');
+    if(!req.user){
+        try{
+            const {username,email,password} = req.body.user;
+            const newUser = new User({
+                username,
+                email,
+                password,
+            });
+            
+            await newUser.save();
+            req.flash('success','Successfully Sign Up');
+            res.status(201).redirect('/auth/login');
+            
+            // register error handling
+        }catch(err){ 
+            req.flash('error',err.message)
+            res.status(302).redirect('/auth/register');
+        }
+    }else{
+        req.flash('error','you already logged in');
+        res.status(302).redirect('/home/');
     }
+    
+   
 }
 
 // login configuration

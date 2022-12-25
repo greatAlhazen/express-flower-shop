@@ -14,7 +14,7 @@ module.exports.validateUser = (req,res,next) =>{
 
  // product server side validation middleware
  module.exports.validateProduct = (req,res,next) =>{
-    const {error} = schemas.userSchema.validate(req.body);
+    const {error} = schemas.productSchema.validate(req.body);
     if(error){
         const message = error.message;
         req.flash('error',message);

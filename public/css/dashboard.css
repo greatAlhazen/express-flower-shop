@@ -234,7 +234,12 @@ table tbody tr:nth-child(even){
 
 #addProduct .formContainer{
     background-color: var(--dusty-rose);
-    gap:2rem;
+    gap:1.4rem;
+}
+
+.imageUpload{
+    width:100%;
+    margin:0;
 }
 
 
@@ -335,7 +340,7 @@ select::-ms-expand{
     display:none;
 }
 
-#titleError,#descError{
+#titleError,#descError,#priceError{
     font-size:1.6rem;
 }
 
@@ -347,6 +352,10 @@ select::-ms-expand{
     right:2.7rem;
     font-size:2.9rem;
 }
+
+
+
+
 
 
 /* media queries for all */

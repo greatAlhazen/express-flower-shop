@@ -4,6 +4,7 @@
 </head>
 <body>
     
+    <%- include('partials/flash')  %> 
 
 <!-- admin sidebar -->
     <section class="adminMain" id="adminMain">
@@ -95,26 +96,25 @@
     <!-- add product -->
     
     <section class="addProduct" id="addProduct">
-        <%- include('partials/flash')  %> 
-        <form class="formContainer" action="/product/add" method="POST">
+        <form class="formContainer" action="/product/add" method="POST" enctype="multipart/form-data">
             <h1 class="formContainerTitle">Add Product</h1>
-            <input type="file" name="image" hidden id="file" accept="image/*" >
+            <input type="file" name="product[file]" hidden id="file" accept="image/*" >
          <div class="imageUpload" data-img="">
             <i class="fa-solid fa-file-image"></i>
         </div>
         <button type="button" class="imageBtn">Choose Image</button>
         <div class="formContainerBox">
-            <input type="text" name="product[title]" id="title" >
+            <input type="text" name="product[title]" id="title" required >
             <h4>Title</h4>
             <span class="formContainerBoxInfo" id="titleError"></span>
         </div>
         <div class="formContainerTextarea">
-            <textarea name="product[desc]" id="desc" ></textarea>
+            <textarea name="product[desc]" id="desc" required ></textarea>
             <h4>Description</h4>
             <span class="formContainerBoxInfo" id="descError"></span>
         </div>
         <div class="formContainerBox">
-            <input type="text" name="product[price]" id="price">
+            <input type="text" name="product[price]" id="price" required>
             <h4>Price</h4>
             <span class="formContainerBoxInfo" id="priceError"></span>
         </div>
@@ -125,7 +125,7 @@
                 <option value="perennials">Perennials</option>
             </select>
         </div>
-        <button class="btn-3" id="submitButton">Add</button>
+        <button class="btn-3" id="submitButton" onclick="return validateForm()">Add</button>
         <a href="#adminMain" class="fas fa-times" id="productClose"></a>
     </form>
 
