@@ -145,7 +145,13 @@
 /* user table */
 
 .users{
-    padding:2rem;
+    padding:7rem 2rem 2rem 2rem;
+}
+
+.usersTitle{
+    margin-bottom:2rem;
+    text-align: center;
+    font-size:3rem;
 }
 
 table{
@@ -356,11 +362,111 @@ select::-ms-expand{
 
 
 
+/* get products */
+
+.productContainer{
+    width:100%;
+    padding-top:7rem;
+    padding-bottom:3rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:2rem;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.productContainerTitle{
+    position: absolute;
+    left:50%;
+    top:0;
+    transform: translateX(-50%);
+    font-size:3rem;
+}
+
+ .productCard{
+    width:30rem;
+    height:33rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.productCard:hover > .product{
+    transform: rotateY(180deg);
+}
+
+.product{
+    position: absolute;
+    width:100%;
+    height:100%;
+    transform-style: preserve-3d;
+    transition:all .6s;
+}
+
+
+.flipCard{
+    position: absolute;
+    width:100%;
+    height:100%;
+    backface-visibility: hidden;
+}
+
+
+.productFront img{
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+
+.productBack{
+    transform:rotateY(180deg);
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    padding:2rem;
+    background:var(--charcoal);
+}
+
+.productBackTitle{
+    font-size:3rem;
+    color:var(--creme);
+}
+
+.productBackDesc{
+    font-size:1.3rem;
+    color:var(--table-gray);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.productBackButton{
+    display:flex;
+    gap:1.4rem;
+
+}
+
+.btn-4{
+    padding:1rem 4rem;
+    color:var(--table-gray);
+    border:none;
+    outline: none;
+    cursor: pointer;
+}
+
+.updateButton{
+    background-color: var(--secondary-color);
+}
+
+.deleteButton{
+    background-color: var(--main-color);
+}
+
 
 
 /* media queries for all */
 
-@media (max-width:768px) {
+@media (max-width:1000px) {
 
     .adminSidebar{
         display: none;
