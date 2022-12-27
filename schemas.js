@@ -22,7 +22,7 @@ module.exports.userSchema = joi.object({
             'string.max': `title should have a maximum length of 40`,
             'any.required': `title is a required field`,
           }),
-        desc: joi.string().required().min(10).max(160).messages({
+        desc: joi.string().required().min(10).max(300).messages({
             'string.base': `description should be a type of text`,
             'string.empty': `description cannot be an empty field`,
             'string.min': `description should have a minimum length of 10`,

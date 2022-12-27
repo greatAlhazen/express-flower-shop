@@ -95,57 +95,33 @@
 
             <div class="productContainer" id="products">
                 <h1 class="productContainerTitle">Products</h1>
-                <div class="productCard">
-                    <div class="product">
-                    <div class="flipCard productFront">
-                        <img src="/images/dahliaCart.jpg" alt="">
-                    </div>
-                    <div class="flipCard productBack">
-                        <h1 class="productBackTitle">title</h1>
-                        <p class="productBackDesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et hic pariatur ab repellat fuga totam. Magnam sunt iure dicta tempora, doloribus expedita quibusdam nostrum nobis labore eius aliquam inventore quisquam.</p>
-                        <div class="productBackButton">
-                            <button class="btn-4 updateButton">
-                                Update
-                            </button>
-                            <button class="btn-4 deleteButton">Delete</button>
+                <% if (Array.isArray(products)) { %>
+                    <% for(let product of products) { %>
+
+                        <div class="productCard">
+                            <div class="product">
+                            <div class="flipCard productFront">
+                                <img src=<%= product.image.url  %>  alt="product">
+                            </div>
+                            <div class="flipCard productBack">
+                                <h1 class="productBackTitle"><%= product.title  %> </h1>
+                                <p class="productBackDesc"><%= product.description  %> </p>
+                                <div class="productBackButton">
+                                    <button class="btn-4 updateButton">
+                                        Update
+                                    </button>
+                                    <button class="btn-4 deleteButton">Delete</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                </div>
-                <div class="productCard">
-                    <div class="product">
-                    <div class="flipCard productFront">
-                        <img src="/images/dahliaCart.jpg" alt="">
-                    </div>
-                    <div class="flipCard productBack">
-                        <h1 class="productBackTitle">title</h1>
-                        <p class="productBackDesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et hic pariatur ab repellat fuga totam. Magnam sunt iure dicta tempora, doloribus expedita quibusdam nostrum nobis labore eius aliquam inventore quisquam.</p>
-                        <div class="productBackButton">
-                            <button class="btn-4 updateButton">
-                                Update
-                            </button>
-                            <button class="btn-4 deleteButton">Delete</button>
                         </div>
-                    </div>
-                </div>
-                </div>
-                <div class="productCard">
-                    <div class="product">
-                    <div class="flipCard productFront">
-                        <img src="/images/dahliaCart.jpg" alt="">
-                    </div>
-                    <div class="flipCard productBack">
-                        <h1 class="productBackTitle">title</h1>
-                        <p class="productBackDesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et hic pariatur ab repellat fuga totam. Magnam sunt iure dicta tempora, doloribus expedita quibusdam nostrum nobis labore eius aliquam inventore quisquam.</p>
-                        <div class="productBackButton">
-                            <button class="btn-4 updateButton">
-                                Update
-                            </button>
-                            <button class="btn-4 deleteButton">Delete</button>
-                        </div>
-                    </div>
-                </div>
-                </div>
+
+
+                        <% } %>
+
+                    <% }%>
+                        
+                    
             </div> 
         </div>
     </section>

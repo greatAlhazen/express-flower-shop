@@ -29,7 +29,7 @@ desc.addEventListener('keyup',function(){
         descError.innerHTML = 'Description is required';
         descError.style.color = 'var(--main-color)'
     }else if(!(desc.value.length > 10 && desc.value.length < 160)){
-        descError.innerHTML = 'Description Character Between 10 and 160';
+        descError.innerHTML = 'Description Character Between 10 and 300';
         descError.style.color = 'var(--main-color)'
     }else{
         descError.innerHTML = 'valid';
