@@ -1,0 +1,19 @@
+<div class="productContainer">
+    <h1 class="productContainerHeading heading">Featured Products</h1>
+
+    <% if (Array.isArray(products)) { %>
+        <% for(let product of products) { %>
+            <div class="product">
+                <img src=<%= product.image.url  %>  alt="flower">
+                <div class="details">
+                    <h1 class="productTitle"><%= product.title  %> </h1>
+                    <p class="productDesc"><%= product.description %> </p>
+                    <a href="">View Product</a>
+                </div>
+            </div>
+
+            <% } %>
+
+            <% }%>
+   
+</div>
