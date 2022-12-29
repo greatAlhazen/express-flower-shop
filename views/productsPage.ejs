@@ -1,0 +1,36 @@
+<%- include('partials/head')  %>
+<link rel="stylesheet" href="/css/productsPage.css">
+<link rel="stylesheet" href="/css/products.css">
+</head>
+<body>
+
+    <%- include('partials/navbar')  %> 
+
+<section class="productsPageContainer">
+    <div class="categories">
+        <form action="/product/products" class="productCategories">
+        <select name="category" id="category" required>
+            <option value="annuals" id="annuals">Annuals</option>
+            <option value="biennials" id="biennials">Biennials</option>
+            <option value="perennials" id="perennials">Perennials</option>
+        </select>
+        <button type="submit" hidden id="categoryButton">send</button>
+    </form>
+    <form action="/product/products" class="sortCategory">
+        <input type="radio" name="sort" value="new" class="sort" id="new">
+        <label for="new">newer</label>
+        <input type="radio" name="sort" value="old" class="sort" id="old">
+        <label for="old">older</label>
+        <button type="submit" hidden id="sortButton">send</button>
+    </form>
+ </div>
+
+ <%- include('partials/products')  %> 
+
+    
+    </section>
+
+    <script src="/scripts/navbar.js"></script>
+    <script src="/scripts/productsPage.js"></script>
+
+<%- include('partials/end')  %> 

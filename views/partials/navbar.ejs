@@ -6,11 +6,11 @@
     <ul class="navList">
         <li class="navListItem"><a href="/home/" class='active' id="links">Home</a></li>
         <li class="navListItem"><a href="/home/#categories" id="links">Categories</a></li>
-        <li class="navListItem"><a id="links">Products</a></li>
+        <li class="navListItem"><a href="/product/products" id="links">Products</a></li>
         <li class="navListItem"><a id="links">Featured</a></li>
         <li class="navListItem"><a id="links">Contact</a></li>
         <% if(!username){ %>
-            <li class="navListItem"><a href="/auth/login" class="btn">Login</a></li>
+            <li class="navListItem"><a href="/auth/login?path=<%=path %> " class="btn">Login</a></li>
          <% } %>
 
     </ul>
@@ -35,7 +35,7 @@
             <li><a><i class="fa-solid fa-basket-shopping"></i>My Cart</a></li>
             <li><a href="/user/change/<%= id  %> " ><i class="fa-solid fa-lock"></i>Change Password</a></li>
             <li>
-            <form action="/auth/logout" class="userInfoLinksLogout" method="POST">
+            <form action="/auth/logout?path=<%= path %> " class="userInfoLinksLogout" method="POST">
                 <button >
                      <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Logout

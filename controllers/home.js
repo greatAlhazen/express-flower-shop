@@ -8,6 +8,7 @@ module.exports.homePage = async(req,res,next) =>{
         id,
         email: req.email,
         image,
-        products: req.product
+        products: req.product,
+        path: 'home',
     })
 }

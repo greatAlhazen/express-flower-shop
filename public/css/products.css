@@ -1,5 +1,6 @@
 .productContainer{
     display:flex;
+    justify-content: center;
     padding:7rem 2rem;
     flex-wrap: wrap;
     gap:3rem;
@@ -16,8 +17,8 @@
 
 
 .product{
-    width:33rem;
-    height:37rem;
+    width:26rem;
+    height:29rem;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -55,6 +56,10 @@
     font-size:1.5rem;
     margin-bottom:1.7rem;
     color:var(--table-gray);
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
  }
 
  .details a{
@@ -67,4 +72,5 @@
     color:var(--table-gray);
     font-size:2rem;
  }
+
 

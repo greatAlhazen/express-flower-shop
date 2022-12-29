@@ -10,7 +10,9 @@ const jwt = require('jsonwebtoken');
 // login page
 module.exports.getlogin = (req,res) =>{
    if(!req.user){
-    res.render('login')
+    res.render('login',{
+        path:req.query.path
+    })
     }else{
         req.flash('error','you already logged in');
         res.status(302).redirect('/home/');
@@ -77,8 +79,11 @@ module.exports.postLogin = async(req,res,next) =>{
              req.session.token = token;
 
             req.flash('success','Successfuly Login Welcome')
-    
-            res.status(201).redirect('/home/');
+            if(req.query.path === 'products'){
+                res.status(201).redirect('/product/products');
+            }else{
+                res.status(201).redirect('/home/');
+            }
         };
     };    
 }
@@ -87,5 +92,11 @@ module.exports.postLogin = async(req,res,next) =>{
 module.exports.logout = (req,res,next) =>{
     req.session.token = null;
     req.flash('success','GoodBye See You Later');
-    res.status(302).redirect('/home/')
+
+    if(req.query.path === 'products'){
+        res.status(302).redirect('/product/products')
+    }else{
+        res.status(302).redirect('/home/')
+    }
+   
 }

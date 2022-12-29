@@ -22,4 +22,16 @@ module.exports.addProduct = async(req,res,next) =>{
         req.flash('error',err.message)
         res.status(302).redirect('/admin/');
     }
-}
+};
+
+module.exports.getProducts = (req,res) =>{
+    res.render('productsPage',{
+        username:req.username,
+        isAdmin:req.isAdmin,
+        id,
+        email: req.email,
+        image,
+        products: req.product,
+        path:'products',
+    });
+};
