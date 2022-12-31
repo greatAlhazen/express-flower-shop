@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const { cloudinary } = require("../cloudinary/cloudinary");
 
 module.exports.addProduct = async(req,res,next) =>{
     
@@ -35,3 +36,37 @@ module.exports.getProducts = (req,res) =>{
         path:'products',
     });
 };
+
+module.exports.updateProductPage = async(req,res,next) =>{
+    const id = req.params.id;
+    const product = await Product.findById(id);
+
+    res.render('updateProduct',{product});
+}
+
+module.exports.updateProduct = async(req,res,next) =>{
+    const id = req.params.id;
+
+    const product = await Product.findById(id);   
+
+    if(req.file){
+
+        await cloudinary.uploader.destroy(product.image.filename);
+        const image = {
+            url:req.file.path,
+            filename:req.file.filename
+        };
+            req.body.product.image = image;
+    }
+
+    await Product.findByIdAndUpdate(id,
+        {
+            $set: req.body.product,
+          },
+          { new: true }
+
+        );
+
+        req.flash('success','Update Product Succesfully');
+        res.status(201).redirect('/admin/')
+}

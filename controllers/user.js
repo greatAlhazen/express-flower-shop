@@ -33,13 +33,22 @@ module.exports.postUpdate = async(req,res,next) =>{
 
         );
 
+        req.flash('success','Update User Succesfully');
         res.status(201).redirect('/home/');
 
 }
 
  // delete user
 module.exports.deleteUser = async(req,res,next) =>{
+    const user = await User.findById(req.params.id);
+
+    if(user.picture.filename){
+        await cloudinary.uploader.destroy(user.picture.filename);
+    }
+
     await User.findByIdAndDelete(req.params.id);
+
+    req.flash('success','Delete User Succesfully');
     res.status(201).redirect('/admin/');
 };
 

@@ -1,0 +1,13 @@
+#addProduct{
+    background:linear-gradient(to bottom right,var(--dusty-rose),var(--maaron-brown)),
+    url(/images/productBack.jpg);
+    background-blend-mode: color-burn;
+    background-position:center;
+    background-size: cover;
+    visibility: visible;
+    opacity: 1;
+}
+
+#addProduct .formContainer{
+    background-color: rgba(255,255,255,.6);
+}

@@ -1,0 +1,50 @@
+<%- include('partials/head')  %>
+<link rel="stylesheet" href="/css/productForm.css">
+<link rel="stylesheet" href="/css/profile.css">
+<link rel="stylesheet" href="/css/updateProduct.css">
+</head>
+<body>
+
+
+
+<section class="addProduct" id="addProduct">
+    <form class="formContainer" action="/product/update/<%= product._id  %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <h1 class="formContainerTitle">Update</h1>
+        <input type="file" name="product[file]" hidden id="file" accept="image/*" >
+     <div class="imageUpload" data-img="">
+        <i class="fa-solid fa-file-image"></i>
+        <img src=<%=product.image.url  %>  alt="">
+    </div>
+    <button type="button" class="imageBtn">Choose Image</button>
+    <div class="formContainerBox">
+        <input type="text" name="product[title]" value="<%= product.title %>" id="title" required >
+        <h4>Title </h4>
+        <span class="formContainerBoxInfo" id="titleError"></span>
+    </div>
+    <div class="formContainerTextarea">
+        <textarea name="product[desc]" id="desc" required ><%= product.description  %></textarea>
+        <h4>Description </h4>
+        <span class="formContainerBoxInfo" id="descError"></span>
+    </div>
+    <div class="formContainerBox">
+        <input type="text" name="product[price]" value="<%= product.price %>" id="price" required>
+        <h4>Price</h4>
+        <span class="formContainerBoxInfo" id="priceError"></span>
+    </div>
+    <div class="formContainerBoxSelect">
+        <select name="product[category]" id="category" required>
+            <option value="annuals">Annuals</option>
+            <option value="biennials">Biennials</option>
+            <option value="perennials">Perennials</option>
+        </select>
+    </div>
+    <button class="btn-3" id="submitButton" onclick="return validateForm()">Update</button>
+    <a href="#adminMain" class="cancel" id="#productClose">Cancel</a>
+</form>
+
+
+    <script src="/scripts/addProValidation.js"></script>
+    <script src="/scripts/imageUpload.js"></script>
+
+
+    <%- include('partials/end')  %> 

@@ -24,4 +24,16 @@ router.route('/products').get(
     product.getProducts,
 )
 
+router.route('/update/:id').get(
+    verify.verifyToken,
+    verify.verifyAdmin,
+    catchAsync(product.updateProductPage),
+).put(
+    verify.verifyToken,
+    verify.verifyAdmin,
+    validate.validateProduct,
+    upload.single('product[file]'),
+    catchAsync(product.updateProduct),
+)
+
 module.exports = router;

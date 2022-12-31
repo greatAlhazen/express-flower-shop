@@ -8,7 +8,8 @@ const session = require('express-session');
 const userRoute = require('./routes/user');
 const adminRoute = require('./routes/admin');
 const methodOverride = require('method-override');
-const productRoute = require('./routes/product')
+const productRoute = require('./routes/product');
+const createError = require('./utils/error'); 
 
 
 
@@ -76,7 +77,7 @@ app.use((err,req,res,next) =>{
 
     if (err.name === "CastError") {
         const message = `Resource not found. Invalid: ${err.path}`;
-        err = new ErrorHandler(message, 400);
+        createError(400,message);
       }
 
     return res.status(status).render('error',{
