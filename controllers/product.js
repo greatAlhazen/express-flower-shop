@@ -69,4 +69,16 @@ module.exports.updateProduct = async(req,res,next) =>{
 
         req.flash('success','Update Product Succesfully');
         res.status(201).redirect('/admin/')
+};
+
+
+module.exports.deleteProduct = async(req,res,next) =>{
+    const id = req.params.id;
+
+    const product = await Product.findById(id);
+    await cloudinary.uploader.destroy(product.image.filename);
+
+    await Product.findByIdAndDelete(id);
+    req.flash('success','Delete Product Successfully');
+    res.status(201).redirect('/admin/');
 }

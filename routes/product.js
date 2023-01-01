@@ -36,4 +36,10 @@ router.route('/update/:id').get(
     catchAsync(product.updateProduct),
 )
 
+router.route('/delete/:id').delete(
+    verify.verifyToken,
+    verify.verifyAdmin,
+    catchAsync(product.deleteProduct),
+)
+
 module.exports = router;

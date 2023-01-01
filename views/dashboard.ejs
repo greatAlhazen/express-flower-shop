@@ -111,7 +111,7 @@
                                 <div class="productUpdateButton">
                                 <a href="/product/update/<%=product._id  %>" class="btn-4 updateButton">Update</a>
                                 </div>
-                                <form action="/product/delete/<%= product._id  %>">
+                                <form action="/product/delete/<%= product._id %>?_method=DELETE" method="Post">
                                     <button class="btn-4 deleteButton">Delete</button>
                                 </form>
                             </div>
