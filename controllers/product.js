@@ -82,3 +82,19 @@ module.exports.deleteProduct = async(req,res,next) =>{
     req.flash('success','Delete Product Successfully');
     res.status(201).redirect('/admin/');
 }
+
+module.exports.getProduct = async(req,res,next) =>{
+    const id = req.params.id;
+    const product = await Product.findById(id);
+
+    res.render('singleProduct',{
+        username:req.username,
+        isAdmin:req.isAdmin,
+        id,
+        email: req.email,
+        image,
+        products: req.product,
+        path: 'singleProduct',
+        product,
+    })
+}

@@ -42,4 +42,11 @@ router.route('/delete/:id').delete(
     catchAsync(product.deleteProduct),
 )
 
+router.route('/singleProduct/:id').get(
+    getUser.jwtVerify,
+    getUser.sendUser,
+    catchAsync(getProduct),
+    product.getProduct,
+)
+
 module.exports = router;

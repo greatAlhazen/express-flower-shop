@@ -1,0 +1,63 @@
+<%- include('partials/head')  %>
+<link rel="stylesheet" href="/css/singleProduct.css">
+</head>
+<body>
+
+    <%- include('partials/navbar')  %> 
+
+<section class="productDetail">
+    <div class="left">
+        <img src=<%= product.image.url  %>  alt="singleProduct" class="leftImage">
+        <div class="leftReview">
+            <button class="leftReviewButton" id="open">Make Review</button>
+                <form action="#" class="reviewContainer">
+                    <a class="fas fa-close" id="close"></a>
+                    <div class="reviewRating">
+                        <input type="number" name="rating" hidden>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <textarea name="desc" id="desc" placeholder="comment your thoughts...." cols="30" rows="10"></textarea>
+                    <button id="review">Review</button>
+                </form>
+             </div>
+        </div>
+    </div>
+    <div class="right">
+        <h1 class="rightTitle"><%=product.title  %> </h1>
+        <p class="rightDetail"><%= product.description  %> </p>
+        <h4 class="rightPrice">$<%= product.price  %> </h4>
+        <button class="rightCheckout"><i class="fa-solid fa-cart-shopping"></i>add Cart</button>
+    </div>
+</section>
+
+<section class="productsAbout">
+
+    <div class="productReview">
+        <h1 class="productReviewsTitle">Reviews</h1>
+        <div class="productReviewCard">
+            <img src="images/annuals/pansies.png" alt="review" class="reviewImage">
+            <div class="ProductReviewCardDetail">
+                <p class="productReviewDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, doloremque illum. Eveniet minima ducimus, tempore quo at aut est exercitationem laboriosam deserunt libero eos accusamus hic facilis aliquam inventore saepe.</p>
+                <div class="productReviewstars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/products')  %> 
+
+    <script src="/scripts/navbar.js"></script>
+    <script src="/scripts/singleProduct.js"></script>
+
+<%- include('partials/end')  %> 
+
+</section>
