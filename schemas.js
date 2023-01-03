@@ -26,7 +26,7 @@ module.exports.userSchema = joi.object({
             'string.base': `description should be a type of text`,
             'string.empty': `description cannot be an empty field`,
             'string.min': `description should have a minimum length of 10`,
-            'string.max': `description should have a maximum length of 160`,
+            'string.max': `description should have a maximum length of 300`,
             'any.required': `description is a required field`,
           }),
         price: joi.string().required().min(1).max(8).messages({
@@ -42,4 +42,24 @@ module.exports.userSchema = joi.object({
             'any.invalid': `category must be biennials- perennials or annuals`,
         }),
     })
+});
+
+ // product server side validation scheme
+ module.exports.reviewSchema = joi.object({
+  reviews: joi.object({
+      body: joi.string().required().min(10).max(300).messages({
+          'string.base': `description should be a type of text`,
+          'string.empty': `description cannot be an empty field`,
+          'string.min': `description should have a minimum length of 10`,
+          'string.max': `description should have a maximum length of 300`,
+          'any.required': `description is a required field`,
+        }),
+      rating: joi.string().required().min(1).max(5).messages({
+          'number.base': `rating should be a type of text`,
+          'number.empty': `rating cannot be an empty field`,
+          'number.min': `rating should have a minimum length of 1`,
+          'number.max': `rating should have a maximum length of 5`,
+          'any.required': `rating is a required field`,
+        }),
+  }).required()
 });

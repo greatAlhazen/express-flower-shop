@@ -20,7 +20,13 @@ const ProductSchema = new mongoose.Schema({
     },
     category: {
         type:String,
-    }
+    },
+    reviews: [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'Reviews',
+        }
+    ]
 },
 {timestamps:true}
 );

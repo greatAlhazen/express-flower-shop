@@ -22,4 +22,16 @@ module.exports.validateUser = (req,res,next) =>{
     }else{
         next();
     }    
+};
+
+ // product server side validation middleware
+ module.exports.validateProduct = (req,res,next) =>{
+    const {error} = schemas.productSchema.validate(req.body);
+    if(error){
+        const message = error.message;
+        req.flash('error',message);
+        res.status(400).redirect('/home/');
+    }else{
+        next();
+    }    
 }

@@ -5,25 +5,33 @@
 
     <%- include('partials/navbar')  %> 
 
+    <%- include('partials/flash')  %> 
+
 <section class="productDetail">
     <div class="left">
         <img src=<%= product.image.url  %>  alt="singleProduct" class="leftImage">
+        <% if(username){ %>
         <div class="leftReview">
             <button class="leftReviewButton" id="open">Make Review</button>
-                <form action="#" class="reviewContainer">
-                    <a class="fas fa-close" id="close"></a>
+                <form action="/reviews/create/<%= product._id %> " method="POST" class="reviewContainer">
+                    <a class="fas fa-close" id="closeReview"></a>
                     <div class="reviewRating">
-                        <input type="number" name="rating" hidden>
+                        <input type="number" id="rating" name="reviews[rating]" hidden required>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                     </div>
-                    <textarea name="desc" id="desc" placeholder="comment your thoughts...." cols="30" rows="10"></textarea>
-                    <button id="review">Review</button>
+                    <div class="reviewDesc">
+                        <textarea name="reviews[body]" id="body" placeholder="comment your thoughts...." cols="30" rows="10"></textarea>
+                        <span class="formContainerBoxInfo" id="bodyError"></span>
+                    </div>
+                    <span class="formContainerBoxInfo" id="commonError"></span>
+                    <button id="review" onclick="return validateForm()">Review</button>
                 </form>
              </div>
+             <% } %>
         </div>
     </div>
     <div class="right">
@@ -55,8 +63,10 @@
 
     <%- include('partials/products')  %> 
 
-    <script src="/scripts/navbar.js"></script>
     <script src="/scripts/singleProduct.js"></script>
+    <script src="/scripts/navbar.js"></script>
+    <script src="/scripts/reviewValidation.js"></script>
+
 
 <%- include('partials/end')  %> 
 

@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken');
 module.exports.getlogin = (req,res) =>{
    if(!req.user){
     res.render('login',{
-        path:req.query.path
+        path:req.query.path,
     })
     }else{
         req.flash('error','you already logged in');
@@ -78,7 +78,7 @@ module.exports.postLogin = async(req,res,next) =>{
 
              req.session.token = token;
 
-            req.flash('success','Successfuly Login Welcome')
+            req.flash('success','Successfuly Login Welcome');
             if(req.query.path === 'products'){
                 res.status(201).redirect('/product/products');
             }else{

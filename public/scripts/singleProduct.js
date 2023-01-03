@@ -1,3 +1,17 @@
+const open = document.querySelector('#open');
+const closeReview = document.querySelector('#closeReview');
+const reviewForm = document.querySelector('.reviewContainer');
+
+open?.addEventListener('click',function(){
+    reviewForm.classList.add('open');
+})
+
+closeReview?.addEventListener('click',function(){
+    reviewForm.classList.remove('open');
+})
+
+
+
 const stars = document.querySelectorAll('.reviewRating i');
 const inputValue = document.querySelector('.reviewRating input');
 
@@ -19,14 +33,3 @@ stars.forEach((item,index) =>{
     })
 });
 
-const open = document.querySelector('#open');
-const close = document.querySelector('#close');
-const reviewForm = document.querySelector('.reviewContainer');
-
-open.onclick = () =>{
-    reviewForm.classList.add('open');
-}
-
-close.onclick = () =>{
-    reviewForm.classList.remove('open');
-}
