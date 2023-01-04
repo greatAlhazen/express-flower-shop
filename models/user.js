@@ -10,10 +10,12 @@ const UserSchema = new mongoose.Schema({
     },
     password:{
         type:String,
+        select:false,
     },
     isAdmin: {
         type:Boolean,
         default:false,
+        select: false,
     },
     picture:{
         url: {

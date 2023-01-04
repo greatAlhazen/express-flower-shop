@@ -20,7 +20,7 @@ module.exports.jwtVerify =(req,res,next) =>{
  // send user specified page
 module.exports.sendUser = async (req, res, next) => {
       if (req.user) {
-        const user = await User.findById(req.user.id)
+        const user = await User.findById(req.user.id).select('+password +isAdmin');
         const {password,username,isAdmin,picture,email} = user._doc;
         req.username = username;
         req.isAdmin = isAdmin;

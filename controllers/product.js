@@ -85,7 +85,12 @@ module.exports.deleteProduct = async(req,res,next) =>{
 
 module.exports.getProduct = async(req,res,next) =>{
     const id = req.params.id;
-    const product = await Product.findById(id);
+    const product = await Product.findById(id).populate({
+        path: 'reviews',
+        populate: {
+            path: 'author',
+        }
+    });
 
     res.render('singleProduct',{
         username:req.username,
@@ -96,5 +101,6 @@ module.exports.getProduct = async(req,res,next) =>{
         products: req.product,
         path: 'singleProduct',
         product,
+        reviews: product.reviews,
     })
 }

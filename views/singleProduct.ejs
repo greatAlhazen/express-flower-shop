@@ -46,19 +46,19 @@
 
     <div class="productReview">
         <h1 class="productReviewsTitle">Reviews</h1>
+        <% for(let review of reviews) { %>
         <div class="productReviewCard">
-            <img src="images/annuals/pansies.png" alt="review" class="reviewImage">
+            <img src=<%= review.author.picture.url  %>  alt="review" class="reviewImage">
             <div class="ProductReviewCardDetail">
-                <p class="productReviewDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, doloremque illum. Eveniet minima ducimus, tempore quo at aut est exercitationem laboriosam deserunt libero eos accusamus hic facilis aliquam inventore saepe.</p>
+                <p class="productReviewDesc"><%= review.body %> </p>
                 <div class="productReviewstars">
+                    <% for(let i=0; i<= review.rating; i++)  { %>
                     <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <% } %>
                 </div>
             </div>
         </div>
+        <% } %>
     </div>
 
     <%- include('partials/products')  %> 

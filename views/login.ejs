@@ -6,7 +6,7 @@
     <%- include('partials/flash')  %> 
     
     <section class="formContainer">
-        <form action="/auth/login?path=<%= path  %>id=<%=id  %>cat=<%= cat  %>   " method="POST">
+        <form action="/auth/login?path=<%= path  %>" method="POST">
         <h1 class="formContainerHeading">Sign In</h1>
         <div class="formContainerBox">
             <input type="text" name="username" placeholder="please enter your Username...." autocomplete="off" id="username">

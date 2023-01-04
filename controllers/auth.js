@@ -60,8 +60,7 @@ module.exports.postRegister =async (req,res,next) =>{
 
 // login configuration
 module.exports.postLogin = async(req,res,next) =>{
-    const user = await User.findOne({username:req.body.username});
-   
+    const user = await User.findOne({username:req.body.username}).select('+password +isAdmin');
     // user not found
     if(!user) {
         req.flash('error','User Not Found');
