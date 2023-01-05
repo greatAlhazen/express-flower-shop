@@ -11,6 +11,7 @@ const methodOverride = require('method-override');
 const productRoute = require('./routes/product');
 const createError = require('./utils/error'); 
 const reviewsRoute = require('./routes/reviews');
+const cartRoute = require('./routes/cart');
 
 
 
@@ -66,6 +67,7 @@ app.use('/user',userRoute);
 app.use('/admin',adminRoute);
 app.use('/product',productRoute);
 app.use('/reviews',reviewsRoute);
+app.use('/cart',cartRoute);
 
 
 

@@ -10,5 +10,6 @@ module.exports.homePage = async(req,res,next) =>{
         image,
         products: req.product,
         path: 'home',
+        quantity: req.cartQuantity,
     })
 }

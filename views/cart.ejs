@@ -1,0 +1,55 @@
+<%- include('partials/head')  %>
+<link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+    
+    <%- include('partials/navbar')  %> 
+    <%- include('partials/flash')  %> 
+
+    <section class="cart">
+        <h1 class="heading">Shopping Cart</h1>
+        <div class="shoppingCart">
+            <div class="left">
+                <% for(let cart of cartItems) { %>
+                    <div class="cartProduct">
+                        <img src=<%= cart.product.image.url %>  alt="cartProduct">
+                        <div class="cartProductDetail">
+                            <h1 class="cartProductDetailTitle"><%= cart.product.title  %> </h1>
+                            <p class="cartProductDetailDesc"><%= cart.product.description  %> </p>
+                            <h4 class="cartProductDetailPrice">$<%= (cart.product.price * cart.quantity)  %> </h4>
+                            <form action="#" class="cartProductDetailQuantity">
+                                <input type="number" value=<%= cart.quantity  %>  min="1" max="10">
+                            </form>
+                            <form action="#" class="cartProductDetailDelete">
+                                <button class="fas fa-trash"></button>
+                            </form>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+            <div class="right">
+                <div class="checkoutWrapper">
+                <div class="checkoutContainer">
+                    <h4 class="checkoutContainerTitle">Subtotal</h4>
+                    <h2 class="checkoutContainerPrice"><%= totalPrice  %> </h2>
+                </div>
+                <div class="checkoutContainer">
+                    <h4 class="checkoutContainerTitle">Tax(5%)</h4>
+                    <h2 class="checkoutContainerPrice"><%= (totalPrice *5) /100  %> </h2>
+                </div>
+                <div class="checkoutContainer">
+                    <h4 class="checkoutContainerTitle">Total</h4>
+                    <h2 class="checkoutContainerPrice"><%= totalPrice + ((totalPrice *5) /100)  %> </h2>
+                </div>
+                <form class="checkoutContainer">
+                    <button>Checkout</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="/scripts/navbar.js"></script>
+    <%- include('partials/end')  %> 

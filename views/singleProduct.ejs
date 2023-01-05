@@ -38,7 +38,11 @@
         <h1 class="rightTitle"><%=product.title  %> </h1>
         <p class="rightDetail"><%= product.description  %> </p>
         <h4 class="rightPrice">$<%= product.price  %> </h4>
+        <form action="/cart/create" method="POST">
+            <input type="text" name="product" value="<%= product._id  %>" hidden>
+            <input type="number" name="quantity" value="1" hidden>
         <button class="rightCheckout"><i class="fa-solid fa-cart-shopping"></i>add Cart</button>
+    </form>
     </div>
 </section>
 

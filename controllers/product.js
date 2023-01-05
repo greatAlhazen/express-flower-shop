@@ -34,6 +34,7 @@ module.exports.getProducts = (req,res) =>{
         image,
         products: req.product,
         path:'products',
+        quantity: req.cartQuantity,
     });
 };
 
@@ -101,6 +102,7 @@ module.exports.getProduct = async(req,res,next) =>{
         products: req.product,
         path: 'singleProduct',
         product,
+        quantity: req.cartQuantity,
         reviews: product.reviews,
     })
 }

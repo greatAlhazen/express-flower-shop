@@ -11,5 +11,6 @@ module.exports.getPage = async(req,res,next) =>{
         email: req.email,
         image,
         products: req.product,
+        quantity: req.cartQuantity,
     })
 }

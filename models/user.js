@@ -25,6 +25,10 @@ const UserSchema = new mongoose.Schema({
         filename: {
             type:String,
         }
+    },
+    cartQuantity:{
+        type:Number,
+        default: 0
     }
 },{timestamps:true});
 

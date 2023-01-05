@@ -21,18 +21,20 @@ module.exports.jwtVerify =(req,res,next) =>{
 module.exports.sendUser = async (req, res, next) => {
       if (req.user) {
         const user = await User.findById(req.user.id).select('+password +isAdmin');
-        const {password,username,isAdmin,picture,email} = user._doc;
+        const {password,username,isAdmin,picture,email,cartQuantity} = user._doc;
         req.username = username;
         req.isAdmin = isAdmin;
          id = req.user.id;
          image = picture.url;
         req.email = email; 
+        req.cartQuantity = cartQuantity
       } else {
         req.username = undefined;
         req.isAdmin = undefined;
         id = undefined;
         image = undefined;
         req.email = undefined;
+        req.cartQuantity = 0;
       }
     next();
 };

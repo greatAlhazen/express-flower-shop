@@ -1,0 +1,131 @@
+.cart{
+    padding:2rem 5%;
+}
+
+.heading{
+    text-align: center;
+    font-size:3rem;
+    margin-bottom:3rem;
+}
+
+.shoppingCart{
+    display:flex;
+}
+
+.left{
+    flex:0 0 70%;
+}
+
+.cartProduct{
+    display:flex;
+    padding:3rem;
+    gap:2rem;
+    border-bottom:var(--border) ;
+}
+
+.cartProduct img{
+    width:25rem;
+    height:10rem;
+    margin:auto 0;
+}
+
+.cartProductDetail{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:2rem;
+}
+
+.cartProductDetailTitle{
+    font-size:2rem;
+    text-align: center;
+    color:var(--vampire-black);
+}
+
+.cartProductDetailDesc{
+    font-size:1.3rem;
+    color:var(--charcoal);
+    text-align: justify;
+}
+
+.cartProductDetailPrice{
+    font-size: 1.6rem;
+    text-align: left;
+    color:var(--secondary-color);
+}
+
+.cartProductDetailQuantity input{
+    background: #eee;
+    padding:2px 2px 2px 1.5rem;
+    width:5rem;
+    border-radius: 1rem;
+}
+
+.cartProductDetailDelete{
+    margin:0 auto;
+}
+
+.cartProductDetailDelete button{
+    font-size:2rem;
+    color:var(--main-color);
+    cursor: pointer;
+}
+
+.right{
+    flex:1;
+    padding:2rem 0 0 7rem;
+}
+
+.checkoutWrapper{
+    border:var(--border);
+    padding:2rem;
+}
+
+.checkoutContainer:not(:last-child){
+    margin-bottom:3rem;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkoutContainer:last-child button{
+    width:100%;
+    padding:1.6rem 0;
+    background-color:var(--vampire-black);
+    color:var(--soft-white);
+    border: var(--border);
+    cursor: pointer;
+}
+
+.checkoutContainerPrice{
+    font-size:2.5rem;
+    color:var(--secondary-color);
+}
+
+.checkoutContainerTitle{
+    font-size:2rem;
+}
+
+@media (max-width:991px) {
+
+    .shoppingCart{
+        flex-direction: column;
+    }
+
+        .left{
+            flex:1;
+        }
+
+        .right{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+
+        .checkoutWrapper{
+            width:30rem;
+        }
+
+}
