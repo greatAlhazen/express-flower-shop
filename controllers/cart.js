@@ -59,13 +59,11 @@ module.exports.createCart = async (req,res,next) =>{
         }else{
             const cartItems = req.body
 
-            const updatedCart = await Cart.findOneAndUpdate({owner: id},{
+                 await Cart.findOneAndUpdate({owner: id},{
                 $push: {
                     "cartItems":cartItems
                 }
             })
-
-            console.log(updatedCart)
         }
     }else{
 
@@ -81,4 +79,55 @@ module.exports.createCart = async (req,res,next) =>{
 
     await user.save();
     res.status(201).redirect('/product/products');
+}
+
+
+module.exports.updateCart = async(req,res,next) =>{
+    const user = await User.findById(id);
+    const cart = await Cart.findOneAndUpdate({owner: id , 'cartItems.product': req.body.product },
+    {
+        $set: {
+            "cartItems.$":{
+                product:req.body.product,
+                quantity: req.body.quantity,
+            }
+        } 
+    },{
+        new:true
+    }
+    );
+
+
+    let quantity = 0;
+      cart.cartItems.forEach(item =>{
+        quantity = quantity + item.quantity;
+      });
+
+      user.cartQuantity = quantity;
+
+    await user.save();
+
+    req.flash('success','Update Cart Successfuly');
+    res.redirect('/cart/getCart');
+    
+};
+
+module.exports.deleteItem = async(req,res,next) =>{
+    const cartItem = req.body;
+    console.log(req.body);
+    const user = await User.findById(id);
+     await Cart.findOneAndUpdate({owner: id},{
+        $pull: {
+            "cartItems":cartItem
+        }
+    });
+
+    user.cartQuantity = user.cartQuantity - req.body.quantity;
+
+    await user.save();
+
+    req.flash('success','Delete Item Successfully');
+
+    res.status(201).redirect('/cart/getCart');
+
 }

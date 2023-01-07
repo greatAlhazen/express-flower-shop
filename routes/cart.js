@@ -20,4 +20,20 @@ router.route('/create').post(
     catchAsync(cart.createCart),
 );
 
+router.route('/update').put(
+    getUser.jwtVerify,
+    getUser.sendUser,
+    verify.verifyToken,
+    verify.verifyAndAuthorize,
+    catchAsync(cart.updateCart),
+)
+
+router.route('/delete').put(
+    getUser.jwtVerify,
+    getUser.sendUser,
+    verify.verifyToken,
+    verify.verifyAndAuthorize,
+    catchAsync(cart.deleteItem),
+)
+
 module.exports = router;

@@ -17,11 +17,15 @@
                             <h1 class="cartProductDetailTitle"><%= cart.product.title  %> </h1>
                             <p class="cartProductDetailDesc"><%= cart.product.description  %> </p>
                             <h4 class="cartProductDetailPrice">$<%= (cart.product.price * cart.quantity)  %> </h4>
-                            <form action="#" class="cartProductDetailQuantity">
-                                <input type="number" value=<%= cart.quantity  %>  min="1" max="10">
+                            <form action="/cart/update?_method=PUT" method="Post" class="cartProductDetailQuantity">
+                                <input type="number" name="quantity" value=<%= cart.quantity  %>  min="1" max="10" id="quantity">
+                                <input type="hidden" value="<%= cart.product._id %>" name="product">
+                                <button type="submit" hidden id="updateButton"></button>
                             </form>
-                            <form action="#" class="cartProductDetailDelete">
-                                <button class="fas fa-trash"></button>
+                            <form action="/cart/delete?_method=PUT" method="Post" class="cartProductDetailDelete">
+                                <input type="text" name="product" value="<%= cart.product._id  %>" hidden>
+                                <input type="number" name="quantity" value="<%= cart.quantity %>" hidden>
+                                <button type="submit" class="fas fa-trash"></button>
                             </form>
                         </div>
                     </div>
@@ -51,5 +55,6 @@
 
 
 
+    <script src="/scripts/cart.js"></script>
     <script src="/scripts/navbar.js"></script>
     <%- include('partials/end')  %> 
