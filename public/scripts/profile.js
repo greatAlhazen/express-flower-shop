@@ -1,4 +1,4 @@
-
+//form inputs
 const username = document.querySelector('#username');
 let validateName = false;
 const email = document.querySelector('#email');
@@ -6,7 +6,7 @@ let validateEmail = false;
 const submitButton = document.querySelector('#submitButton')
 
 
-
+//username client side validation
 username.addEventListener('keyup',function(){
     let nameError = document.querySelector('#nameError');
     if (username.value.length == 0){
@@ -23,6 +23,7 @@ username.addEventListener('keyup',function(){
 
 });
 
+//email client side validation
 email.addEventListener('keyup',function(){
     let emailError = document.querySelector('#emailError');
     console.log(emailError)
@@ -40,6 +41,7 @@ email.addEventListener('keyup',function(){
 
 });
 
+//before submit
 const validateForm = () =>{
     if(!validateName || !validateEmail || !validatePassword || !validateAgain){
         let commonError = document.querySelector('#commonError');

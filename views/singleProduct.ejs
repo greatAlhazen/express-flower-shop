@@ -7,6 +7,7 @@
 
     <%- include('partials/flash')  %> 
 
+    <!-- product detail section -->
 <section class="productDetail">
     <div class="left">
         <img src=<%= product.image.url  %>  alt="singleProduct" class="leftImage">
@@ -48,6 +49,7 @@
 
 <section class="productsAbout">
 
+    <!-- product review section -->
     <div class="productReview">
         <h1 class="productReviewsTitle">Reviews</h1>
         <% for(let review of reviews) { %>
@@ -61,6 +63,14 @@
                     <% } %>
                 </div>
             </div>
+            <%  if(review.author.username === username) {%>
+            <form action="/reviews/delete?_method=DELETE" method="Post" class="deleteReview">
+                <input type="hidden" name="id" value="<%=product._id %>">
+                <input type="hidden" name="reviewId" value="<%= review._id %>">
+                <input type="hidden" name="category" value="<%= product.category %>">
+                <button type="submit">Delete </button>
+            </form>
+            <% } %>
         </div>
         <% } %>
     </div>

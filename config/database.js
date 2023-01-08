@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//connection database config
 const databaseConnection = (url) =>{
     mongoose.connect(url,{
         useNewUrlParser: true,

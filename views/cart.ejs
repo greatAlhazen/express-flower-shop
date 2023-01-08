@@ -6,6 +6,7 @@
     <%- include('partials/navbar')  %> 
     <%- include('partials/flash')  %> 
 
+    <!-- cart page -->
     <section class="cart">
         <h1 class="heading">Shopping Cart</h1>
         <div class="shoppingCart">
@@ -31,6 +32,7 @@
                     </div>
                     <% } %>
             </div>
+            <!-- checkout page -->
             <div class="right">
                 <div class="checkoutWrapper">
                 <div class="checkoutContainer">
@@ -45,8 +47,9 @@
                     <h4 class="checkoutContainerTitle">Total</h4>
                     <h2 class="checkoutContainerPrice"><%= totalPrice + ((totalPrice *5) /100)  %> </h2>
                 </div>
-                <form class="checkoutContainer">
-                    <button>Checkout</button>
+                <form action="/stripe/create-checkout-session" method="POST" class="checkoutContainer">
+                    <input type="hidden" name="cartId" value="<%= cartId  %>">
+                    <button type="submit">Checkout</button>
                 </form>
             </div>
             </div>

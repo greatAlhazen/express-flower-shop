@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Review = require('./review');
 
 const ProductSchema = new mongoose.Schema({
     title: {
@@ -30,5 +31,17 @@ const ProductSchema = new mongoose.Schema({
 },
 {timestamps:true}
 );
+
+
+//if delete product will delete reviews relational with product
+ProductSchema.post('findOneAndDelete',async function(doc){
+    if(doc){
+        await Review.deleteMany({
+            _id:{
+                $in: doc.reviews
+            }
+        })
+    }
+})
 
 module.exports = mongoose.model('Product',ProductSchema);

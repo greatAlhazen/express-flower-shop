@@ -8,8 +8,10 @@ const { storage } = require('../cloudinary/cloudinary');
 const getUser = require('../utils/getUser');
 const getProduct = require('../utils/getProduct');
 
+//config image upload
 const upload = multer({ storage: storage});
 
+//add product
 router.route('/add').post(
     verify.verifyToken,
     verify.verifyAdmin,
@@ -17,13 +19,15 @@ router.route('/add').post(
     upload.single('product[file]'),
     catchAsync(product.addProduct));
 
+//get all products
 router.route('/products').get(
     getUser.jwtVerify,
-    getUser.sendUser,
+    catchAsync(getUser.sendUser),
     catchAsync(getProduct),
     product.getProducts,
 )
 
+//update product
 router.route('/update/:id').get(
     verify.verifyToken,
     verify.verifyAdmin,
@@ -36,15 +40,17 @@ router.route('/update/:id').get(
     catchAsync(product.updateProduct),
 )
 
+//delete product
 router.route('/delete/:id').delete(
     verify.verifyToken,
     verify.verifyAdmin,
     catchAsync(product.deleteProduct),
 )
 
+//get single product
 router.route('/singleProduct/:id').get(
     getUser.jwtVerify,
-    getUser.sendUser,
+    catchAsync(getUser.sendUser),
     catchAsync(getProduct),
     product.getProduct,
 )

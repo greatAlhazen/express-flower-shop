@@ -2,6 +2,7 @@ const open = document.querySelector('#open');
 const closeReview = document.querySelector('#closeReview');
 const reviewForm = document.querySelector('.reviewContainer');
 
+//custom review popup
 open?.addEventListener('click',function(){
     reviewForm.classList.add('open');
 })
@@ -11,7 +12,7 @@ closeReview?.addEventListener('click',function(){
 })
 
 
-
+// handle review star
 const stars = document.querySelectorAll('.reviewRating i');
 const inputValue = document.querySelector('.reviewRating input');
 

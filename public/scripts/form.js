@@ -1,5 +1,6 @@
 const eyeIcons = document.querySelectorAll('.formContainerBox .fas');
 
+//show password handle
 eyeIcons.forEach((item) =>{
     item.addEventListener('click',function(){
         if(item.classList.contains('fa-eye')){

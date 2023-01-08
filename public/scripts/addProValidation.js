@@ -1,3 +1,4 @@
+//form inputs
 const title = document.querySelector('#title');
 let validateTitle = false;
 const desc = document.querySelector('#desc');
@@ -5,7 +6,7 @@ let validateDesc = false;
 const price = document.querySelector('#price');
 let validatePrice = false;
 
-
+//product title client side validation
 title.addEventListener('keyup',function(){
     let titleError = document.querySelector('#titleError');
     if (title.value.length == 0){
@@ -22,6 +23,7 @@ title.addEventListener('keyup',function(){
 
 });
 
+//product description client side validation
 desc.addEventListener('keyup',function(){
     let descError = document.querySelector('#descError');
     console.log(descError);
@@ -39,6 +41,7 @@ desc.addEventListener('keyup',function(){
 
 });
 
+//product price client side validation
 price.addEventListener('keyup',function(){
     let priceError = document.querySelector('#priceError');
     console.log(descError)
@@ -56,7 +59,7 @@ price.addEventListener('keyup',function(){
 
 });
 
-
+//before submit
 const validateForm = () =>{
     if(!validateTitle || !validateDesc || !validatePrice ){
         let commonError = document.querySelector('#commonError');

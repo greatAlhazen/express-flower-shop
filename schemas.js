@@ -44,7 +44,7 @@ module.exports.userSchema = joi.object({
     })
 });
 
- // product server side validation scheme
+ // review server side validation scheme
  module.exports.reviewSchema = joi.object({
   reviews: joi.object({
       body: joi.string().required().min(10).max(300).messages({

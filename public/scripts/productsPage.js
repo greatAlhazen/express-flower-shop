@@ -5,6 +5,7 @@ const sortButton = document.querySelector('#sortButton');
 const categoryForm = document.querySelector('.productCategories');
 const sortForm = document.querySelector('.sortCategory');
 
+//custom query value
 let params = (new URL(document.location)).searchParams;
 const queryCat = params.get('category');
 const querySort = params.get('sort');
@@ -21,12 +22,12 @@ if(selectedRadio){
 }
 
 
-
+//send backend if category value changed
 category.addEventListener('change',function(){
     categoryButton.click();
 });
 
-
+//send backend if sort value changed
 sort.forEach(element => {
     element.addEventListener('change',function(){
         sortButton.click();    

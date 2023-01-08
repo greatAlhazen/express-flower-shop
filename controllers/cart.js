@@ -1,17 +1,19 @@
 const Cart = require('../models/cart');
 const User = require('../models/user');
 
-
+//get user cart
 module.exports.getCartPage = async(req,res,next) =>{
     const cart = await Cart.findOne({
         owner: id
     }).populate('cartItems.product');
 
-
+    //if cart is empty redirect user
     if(!cart){
         req.flash('error','Cart is empty.Discover items');
         res.status(302).redirect('/product/products')
     }else{
+
+        ///total price from cart
         let totalPrice = 0;
         cart.cartItems.forEach(item =>{
             totalPrice = totalPrice + (item.product.price * item.quantity);
@@ -28,12 +30,14 @@ module.exports.getCartPage = async(req,res,next) =>{
             path: 'cart',
             cartItems: cart.cartItems,
             totalPrice,
+            cartId: cart._id,
         });
     }
 
     
 }
 
+//create cart
 module.exports.createCart = async (req,res,next) =>{
     const cart = await Cart.findOne({
         owner: id
@@ -41,9 +45,11 @@ module.exports.createCart = async (req,res,next) =>{
 
     const user = await User.findById(id);
 
+    //cart is not empty
     if(cart){
         const item = cart.cartItems.find(c => c.product.toString() === req.body.product.toString());
 
+        //product in cart
         if(item){
             item.quantity +=1
 
@@ -57,6 +63,8 @@ module.exports.createCart = async (req,res,next) =>{
             }
             )
         }else{
+
+            //product not in cart
             const cartItems = req.body
 
                  await Cart.findOneAndUpdate({owner: id},{
@@ -67,6 +75,7 @@ module.exports.createCart = async (req,res,next) =>{
         }
     }else{
 
+        //cart is empty
         const newCart = new Cart({
             owner: id,
             cartItems: req.body
@@ -75,6 +84,7 @@ module.exports.createCart = async (req,res,next) =>{
         await newCart.save();
     }
 
+    //user cart quantity update
     user.cartQuantity +=1;
 
     await user.save();
@@ -82,6 +92,7 @@ module.exports.createCart = async (req,res,next) =>{
 }
 
 
+//update cart
 module.exports.updateCart = async(req,res,next) =>{
     const user = await User.findById(id);
     const cart = await Cart.findOneAndUpdate({owner: id , 'cartItems.product': req.body.product },
@@ -97,7 +108,7 @@ module.exports.updateCart = async(req,res,next) =>{
     }
     );
 
-
+    ///update user quantity
     let quantity = 0;
       cart.cartItems.forEach(item =>{
         quantity = quantity + item.quantity;
@@ -112,6 +123,7 @@ module.exports.updateCart = async(req,res,next) =>{
     
 };
 
+//delete item from cart
 module.exports.deleteItem = async(req,res,next) =>{
     const cartItem = req.body;
     console.log(req.body);

@@ -1,3 +1,4 @@
+//if input click will hidden button click
 const inputs = document.querySelectorAll('#quantity');
 
 

@@ -43,6 +43,7 @@ module.exports.deleteUser = async(req,res,next) =>{
     const user = await User.findById(req.params.id);
 
     if(user.picture.filename){
+        //if user image is not empty delete image in cloudinary
         await cloudinary.uploader.destroy(user.picture.filename);
     }
 

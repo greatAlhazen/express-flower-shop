@@ -1,4 +1,4 @@
-
+//form inputs
 const username = document.querySelector('#username');
 let validateName = false;
 const email = document.querySelector('#email');
@@ -9,6 +9,7 @@ const againPassword = document.querySelector('#againPassword');
 let validateAgain = false;
 const submitButton = document.querySelector('#submitButton')
 
+///username client side validation
 username.addEventListener('keyup',function(){
     let nameError = document.querySelector('#nameError');
     if (username.value.length == 0){
@@ -25,6 +26,7 @@ username.addEventListener('keyup',function(){
 
 });
 
+//email client side validation
 email.addEventListener('keyup',function(){
     let emailError = document.querySelector('#emailError');
     console.log(emailError)
@@ -43,6 +45,7 @@ email.addEventListener('keyup',function(){
 });
 
 
+//password client side validation
 password.addEventListener('keyup',function(){
     let passwordError = document.querySelector('#passwordError');
     if (password.value.length == 0){
@@ -58,6 +61,7 @@ password.addEventListener('keyup',function(){
     }
 });
 
+//againpassword client side validation
 againPassword.addEventListener('keyup',function(){
     let againError = document.querySelector('#againError');
     console.log(password.value);
@@ -75,6 +79,7 @@ againPassword.addEventListener('keyup',function(){
 });
 
 
+//before submit
 const validateForm = () =>{
     if(!validateName || !validateEmail || !validatePassword || !validateAgain){
         let commonError = document.querySelector('#commonError');

@@ -1,6 +1,7 @@
 const Product = require('../models/product');
 const { cloudinary } = require("../cloudinary/cloudinary");
 
+///add product
 module.exports.addProduct = async(req,res,next) =>{
     
     try{
@@ -25,6 +26,7 @@ module.exports.addProduct = async(req,res,next) =>{
     }
 };
 
+//get all products
 module.exports.getProducts = (req,res) =>{
     res.render('productsPage',{
         username:req.username,
@@ -38,6 +40,7 @@ module.exports.getProducts = (req,res) =>{
     });
 };
 
+//update product page
 module.exports.updateProductPage = async(req,res,next) =>{
     const id = req.params.id;
     const product = await Product.findById(id);
@@ -45,6 +48,7 @@ module.exports.updateProductPage = async(req,res,next) =>{
     res.render('updateProduct',{product});
 }
 
+//update product
 module.exports.updateProduct = async(req,res,next) =>{
     const id = req.params.id;
 
@@ -52,6 +56,7 @@ module.exports.updateProduct = async(req,res,next) =>{
 
     if(req.file){
 
+        //delete old image in cloudinary
         await cloudinary.uploader.destroy(product.image.filename);
         const image = {
             url:req.file.path,
@@ -73,10 +78,12 @@ module.exports.updateProduct = async(req,res,next) =>{
 };
 
 
+//delete product
 module.exports.deleteProduct = async(req,res,next) =>{
     const id = req.params.id;
 
     const product = await Product.findById(id);
+    //delete image in cloudinary
     await cloudinary.uploader.destroy(product.image.filename);
 
     await Product.findByIdAndDelete(id);
@@ -84,6 +91,8 @@ module.exports.deleteProduct = async(req,res,next) =>{
     res.status(201).redirect('/admin/');
 }
 
+
+//get single product
 module.exports.getProduct = async(req,res,next) =>{
     const id = req.params.id;
     const product = await Product.findById(id).populate({

@@ -1,5 +1,6 @@
 const category = document.querySelectorAll('.category');
 
+//category animation
 category.forEach((item) =>{
     item.addEventListener('mouseover',function(){
         if(item.classList.contains('category-1')){

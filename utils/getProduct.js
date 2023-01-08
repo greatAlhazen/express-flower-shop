@@ -1,15 +1,18 @@
 const Product = require('../models/product');
 
 
+///custom get product middleware
 const getProduct = async (req, res, next) => {
    let products;
     const category = req.query.category;
     const sort = req.query.sort
 
+    //send product with category
     try{ 
         if(category){
         products = await Product.find({"category": {$eq: category}});
     }else if(sort){
+        //send product with sort
         if(sort === 'new'){
             products = await Product.find().sort({createdAt: -1});
         }else{
@@ -21,7 +24,8 @@ const getProduct = async (req, res, next) => {
 }catch(err){
         products = 'Products are not found'
     }
-       
+     
+    //send product without anything
     req.product = products;
     next();
 };

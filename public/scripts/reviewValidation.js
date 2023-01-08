@@ -2,7 +2,7 @@ const body = document.querySelector('#body');
 let validateBody = false;
 
 
-
+//review body client side validation
 body?.addEventListener('keyup',function(){
     let bodyError = document.querySelector('#bodyError');
     if(body.value.length == 0){
@@ -21,7 +21,7 @@ body?.addEventListener('keyup',function(){
 
 
 
-
+//before submit
 const validateForm = () =>{
     if(!validateBody ){
         let commonError = document.querySelector('#commonError');

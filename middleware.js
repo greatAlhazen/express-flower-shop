@@ -1,12 +1,12 @@
 const schemas = require('./schemas.js');
+const createError = require('./utils/error');
 
  // user server side validation middleware
 module.exports.validateUser = (req,res,next) =>{
     const {error} = schemas.userSchema.validate(req.body);
     if(error){
         const message = error.message;
-        req.flash('error',message);
-        res.status(400).redirect('/auth/register');
+        next(createError(403,message));
     }else{
         next();
     }    
@@ -17,20 +17,18 @@ module.exports.validateUser = (req,res,next) =>{
     const {error} = schemas.productSchema.validate(req.body);
     if(error){
         const message = error.message;
-        req.flash('error',message);
-        res.status(400).redirect('/admin/#addProduct');
+        next(createError(403,message));
     }else{
         next();
     }    
 };
 
- // product server side validation middleware
- module.exports.validateProduct = (req,res,next) =>{
-    const {error} = schemas.productSchema.validate(req.body);
+ // review server side validation middleware
+ module.exports.validateReview = (req,res,next) =>{
+    const {error} = schemas.reviewSchema.validate(req.body);
     if(error){
         const message = error.message;
-        req.flash('error',message);
-        res.status(400).redirect('/home/');
+        next(createError(403,message));
     }else{
         next();
     }    

@@ -5,10 +5,10 @@ const verify = require('../utils/verifyToken');
 const getUser = require('../utils/getUser');
 const getProduct = require('../utils/getProduct');
 
-
+//get admin page
 router.route('/').get(
     getUser.jwtVerify,
-    getUser.sendUser,
+    catchAsync(getUser.sendUser),
     verify.verifyToken,
     verify.verifyAdmin,
     catchAsync(getProduct),

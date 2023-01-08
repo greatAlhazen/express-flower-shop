@@ -3,11 +3,12 @@ const button = document.querySelector('.imageBtn');
 const file = document.querySelector('#file');
 const imageArea = document.querySelector('.imageUpload');
 
-
+//hidden file click if button click
 button.addEventListener('click',function(){
     file.click();
 });
 
+//image upload
 file.addEventListener('change',function(){
     const image = this.files[0];
     const reader = new FileReader();

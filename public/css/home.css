@@ -1,6 +1,9 @@
+/* home section */
+
 .home{
     display: flex;
     width: 100%;
+    padding:7rem 0;
 }
 
 .homeContent{
@@ -38,7 +41,7 @@
     height:100%;
 }
 
-
+/* cproduct categories container */
 .categories{
     padding:7rem 3rem 0 3rem;
 }

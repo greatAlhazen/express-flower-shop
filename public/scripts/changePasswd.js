@@ -1,10 +1,11 @@
-
+//form inputs
 const oldPassword = document.querySelector('#oldPassword');
 let validateOld = false;
 const password = document.querySelector('#password');
 let validatePassword = false;
 const submitButton = document.querySelector('#submitButton')
 
+//old password client side validation
 oldPassword.addEventListener('keyup',function(){
     let oldError = document.querySelector('#oldError');
     if (oldPassword.value.length == 0){
@@ -18,7 +19,7 @@ oldPassword.addEventListener('keyup',function(){
 
 });
 
-
+//new password client side validation
 password.addEventListener('keyup',function(){
     let passwordError = document.querySelector('#passwordError');
     if (password.value.length == 0){
@@ -36,7 +37,7 @@ password.addEventListener('keyup',function(){
 
 
 
-
+//before submit
 const validateForm = () =>{
     if(!validateOld || !validatePassword ){
         let commonError = document.querySelector('#commonError');

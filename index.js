@@ -12,6 +12,7 @@ const productRoute = require('./routes/product');
 const createError = require('./utils/error'); 
 const reviewsRoute = require('./routes/reviews');
 const cartRoute = require('./routes/cart');
+const stripeRoute = require('./routes/stripe');
 
 
 
@@ -54,6 +55,7 @@ app.use((req,res,next) =>{
     next();
 });
 
+ // static folder configuration
 app.use(express.static(path.join(__dirname,'public')));
 
  // ejs configuration
@@ -68,6 +70,7 @@ app.use('/admin',adminRoute);
 app.use('/product',productRoute);
 app.use('/reviews',reviewsRoute);
 app.use('/cart',cartRoute);
+app.use('/stripe',stripeRoute);
 
 
 
