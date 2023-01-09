@@ -1,5 +1,7 @@
 const Product = require('../models/product');
 const { cloudinary } = require("../cloudinary/cloudinary");
+const Cart = require('../models/cart');
+const User = require('../models/user');
 
 ///add product
 module.exports.addProduct = async(req,res,next) =>{
@@ -80,22 +82,44 @@ module.exports.updateProduct = async(req,res,next) =>{
 
 //delete product
 module.exports.deleteProduct = async(req,res,next) =>{
-    const id = req.params.id;
+    const cart = await Cart.findOne({'cartItems.product': req.params.id}).populate('cartItems.product').populate('owner');
 
-    const product = await Product.findById(id);
+    //delete cartItems match deleted product
+    await Cart.findOneAndUpdate({owner: id , 'cartItems.product': req.params.id },
+    {
+        $pull: {
+            "cartItems":{
+                "product": req.params.id
+            } 
+        } 
+    },{new:true}
+    )
+
+    //user cartQuantity update because cartItems deleted
+    const user = await User.findById(cart.owner._id);
+    let quantity = 0;
+
+    updatedCart.cartItems.forEach(item =>{
+        quantity = quantity + item.quantity;
+    })
+
+    user.cartQuantity = quantity;
+    await user.save();
+
+
+    const product = await Product.findById(req.params.id);
     //delete image in cloudinary
     await cloudinary.uploader.destroy(product.image.filename);
 
-    await Product.findByIdAndDelete(id);
+    await Product.findByIdAndDelete(req.params.id);
     req.flash('success','Delete Product Successfully');
-    res.status(201).redirect('/admin/');
+    res.status(201).redirect('/admin/'); 
 }
 
 
 //get single product
 module.exports.getProduct = async(req,res,next) =>{
-    const id = req.params.id;
-    const product = await Product.findById(id).populate({
+    const product = await Product.findById(req.params.id).populate({
         path: 'reviews',
         populate: {
             path: 'author',

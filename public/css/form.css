@@ -81,3 +81,7 @@
     font-size:1.6rem;
     color:var(--main-color);
 }
+
+footer{
+    display: none;    
+}

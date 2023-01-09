@@ -32,35 +32,44 @@ module.exports.getRegister = (req,res) =>{
 
 // register configuration
 module.exports.postRegister =async (req,res,next) =>{
-    if(!req.user){
-        try{
-            const {username,email,password} = req.body.user;
-            const newUser = new User({
-                username,
-                email,
-                password,
-            });
-            
-            await newUser.save();
-            req.flash('success','Successfully Sign Up');
-            res.status(201).redirect('/auth/login');
-            
-            // register error handling
-        }catch(err){ 
-            req.flash('error',err.message)
-            res.status(302).redirect('/auth/register');
-        }
+    //protect admin
+    if(req.body.user.isAdmin){
+        req.flash('error','congratulations- you are smart guy');
+        res.status(201).redirect('/home/');
     }else{
-        req.flash('error','you already logged in');
-        res.status(302).redirect('/home/');
+        if(!req.user){
+            try{
+                const {username,email,password} = req.body.user;
+                const newUser = new User({
+                    username,
+                    email,
+                    password,
+                });
+                
+                await newUser.save();
+                req.flash('success','Successfully Sign Up');
+                res.status(201).redirect('/auth/login');
+                
+                // register error handling
+            }catch(err){ 
+                req.flash('error',err.message)
+                res.status(302).redirect('/auth/register');
+            }
+        }else{
+            req.flash('error','you already logged in');
+            res.status(302).redirect('/home/');
+        }
+        
     }
-    
+       
    
 }
 
 // login configuration
 module.exports.postLogin = async(req,res,next) =>{
-    const user = await User.findOne({username:req.body.username}).select('+password +isAdmin');
+    
+    if(!req.user){
+        const user = await User.findOne({username:req.body.username}).select('+password +isAdmin');
     // user not found
     if(!user) {
         req.flash('error','User Not Found');
@@ -84,7 +93,11 @@ module.exports.postLogin = async(req,res,next) =>{
                 res.status(201).redirect('/home/');
             }
         };
-    };    
+    }} else{
+        req.flash('error','you already logged in');
+        res.status(302).redirect('/home/');
+    }
+      
 }
 
  // logout configuration

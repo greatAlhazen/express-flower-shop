@@ -14,6 +14,11 @@ module.exports.getUpdatePage = (req,res) =>{
 
  // user update profile 
 module.exports.postUpdate = async(req,res,next) =>{
+    //protect admin
+   if(req.body.isAdmin){
+    req.flash('error','congratulations- you are smart guy');
+    res.status(201).redirect('/home/');
+   }else{
     const user = await User.findById(req.params.id);
    
     if(user.picture.filename){
@@ -36,6 +41,7 @@ module.exports.postUpdate = async(req,res,next) =>{
         req.flash('success','Update User Succesfully');
         res.status(201).redirect('/home/');
 
+   } 
 }
 
  // delete user

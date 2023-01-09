@@ -276,6 +276,18 @@
     text-align: center;
  }
 
+ .backDiscover{
+    width:10rem;
+    position: absolute;
+    top:1rem;
+    right:1rem;
+    padding:1.2rem;
+    font-size:2rem;
+    background-color: var(--charcoal);
+    color:var(--soft-white);
+    text-align: center;
+ }
+
 
 
  @media (max-width:768px) {
@@ -289,6 +301,10 @@
 
     .right{
         width:100%;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .productsAbout{

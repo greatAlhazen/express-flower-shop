@@ -3,7 +3,7 @@ const Reviews = require('../models/review');
 
 //create review
 module.exports.createReview = async(req,res,next) =>{
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.productId);
     const review = new Reviews(req.body.reviews);
     review.author = id;
     product.reviews.push(review);

@@ -33,3 +33,10 @@ sort.forEach(element => {
         sortButton.click();    
     })
 });
+
+//custom link activate
+const homeLink = document.querySelector("[href='/home/']");
+const productsLink = document.querySelector("[href='/product/products']");
+
+homeLink.classList.remove('active');
+productsLink.classList.add('active');

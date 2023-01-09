@@ -5,38 +5,38 @@ const catchAsync = require('../utils/asyncError');
 const cart = require('../controllers/cart');
 
 //get cart
-router.route('/getCart').get(
-    getUser.jwtVerify,
-    catchAsync(getUser.sendUser),
+router.route('/getCart/:id').get(
     verify.verifyToken,
     verify.verifyAndAuthorize,
+    getUser.jwtVerify,
+    catchAsync(getUser.sendUser),
     catchAsync(cart.getCartPage),
 );
 
 //create cart
-router.route('/create').post(
-    getUser.jwtVerify,
-    catchAsync(getUser.sendUser),
+router.route('/create/:id').post(
     verify.verifyToken,
     verify.verifyAndAuthorize,
+    getUser.jwtVerify,
+    catchAsync(getUser.sendUser),
     catchAsync(cart.createCart),
 );
 
 //update cart
-router.route('/update').put(
-    getUser.jwtVerify,
-    catchAsync(getUser.sendUser),
+router.route('/update/:id').put(
     verify.verifyToken,
     verify.verifyAndAuthorize,
+    getUser.jwtVerify,
+    catchAsync(getUser.sendUser),
     catchAsync(cart.updateCart),
 )
 
-//7delete cart items
-router.route('/delete').put(
-    getUser.jwtVerify,
-    catchAsync(getUser.sendUser),
+//delete cart items
+router.route('/delete/:id').put(
     verify.verifyToken,
     verify.verifyAndAuthorize,
+    getUser.jwtVerify,
+    catchAsync(getUser.sendUser),
     catchAsync(cart.deleteItem),
 )
 

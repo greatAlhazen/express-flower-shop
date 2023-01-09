@@ -7,10 +7,10 @@ const getProduct = require('../utils/getProduct');
 
 //get admin page
 router.route('/').get(
-    getUser.jwtVerify,
-    catchAsync(getUser.sendUser),
     verify.verifyToken,
     verify.verifyAdmin,
+    getUser.jwtVerify,
+    catchAsync(getUser.sendUser),
     catchAsync(getProduct),
     catchAsync(admin.getPage)
 );

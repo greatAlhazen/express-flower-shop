@@ -3,7 +3,7 @@
 </head>
 <body>
 
-    <%- include('partials/navbar')  %> 
+    <div class="backDiscover"><a href="/home">Back</a></div>
 
     <%- include('partials/flash')  %> 
 
@@ -14,7 +14,7 @@
         <% if(username){ %>
         <div class="leftReview">
             <button class="leftReviewButton" id="open">Make Review</button>
-                <form action="/reviews/create/<%= product._id %> " method="POST" class="reviewContainer">
+                <form action="/reviews/create/<%= id %>/<%= product._id %> " method="POST" class="reviewContainer">
                     <a class="fas fa-close" id="closeReview"></a>
                     <div class="reviewRating">
                         <input type="number" id="rating" name="reviews[rating]" hidden required>
@@ -39,7 +39,7 @@
         <h1 class="rightTitle"><%=product.title  %> </h1>
         <p class="rightDetail"><%= product.description  %> </p>
         <h4 class="rightPrice">$<%= product.price  %> </h4>
-        <form action="/cart/create" method="POST">
+        <form action="/cart/create/<%= id %>" method="POST">
             <input type="text" name="product" value="<%= product._id  %>" hidden>
             <input type="number" name="quantity" value="1" hidden>
         <button class="rightCheckout"><i class="fa-solid fa-cart-shopping"></i>add Cart</button>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <%  if(review.author.username === username) {%>
-            <form action="/reviews/delete?_method=DELETE" method="Post" class="deleteReview">
+            <form action="/reviews/delete/<%= id  %>?_method=DELETE" method="Post" class="deleteReview">
                 <input type="hidden" name="id" value="<%=product._id %>">
                 <input type="hidden" name="reviewId" value="<%= review._id %>">
                 <input type="hidden" name="category" value="<%= product.category %>">
@@ -75,7 +75,10 @@
         <% } %>
     </div>
 
+
     <%- include('partials/products')  %> 
+
+</section>
 
     <script src="/scripts/singleProduct.js"></script>
     <script src="/scripts/navbar.js"></script>
@@ -84,4 +87,3 @@
 
 <%- include('partials/end')  %> 
 
-</section>

@@ -325,6 +325,9 @@ table tbody tr:nth-child(even){
     background-color: var(--main-color);
 }
 
+footer{
+    display: none;
+}
 
 
 /* media queries for all */

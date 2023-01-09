@@ -6,7 +6,7 @@ const catchAsync = require('../utils/asyncError');
 const validate = require('../middleware.js');
 
 //create review
-router.route('/create/:id').post(
+router.route('/create/:id/:productId').post(
     verify.verifyToken,
     verify.verifyAndAuthorize,
     getUser.jwtVerify,
@@ -15,7 +15,7 @@ router.route('/create/:id').post(
     catchAsync(reviews.createReview),
 )
 
-router.route('/delete').delete(
+router.route('/delete/:id').delete(
     verify.verifyToken,
     verify.verifyAndAuthorize,
     catchAsync(reviews.deleteReview),

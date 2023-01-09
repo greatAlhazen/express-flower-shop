@@ -11,10 +11,10 @@ const upload = multer({ storage: storage});
 
 //update user
 router.route('/update/:id').get(
-    getUser.jwtVerify,
-    catchAsync(getUser.sendUser),
     verify.verifyToken,
     verify.verifyAndAuthorize,
+    getUser.jwtVerify,
+    catchAsync(getUser.sendUser),
     user.getUpdatePage
     )
 .put(upload.single('image'),catchAsync(user.postUpdate));

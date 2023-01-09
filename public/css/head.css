@@ -80,11 +80,11 @@ a{
     color:transparent;
     font-size:3rem;
     margin-bottom:3rem;
+    transition: all .2s;
 }
 
 .heading:hover{
     background-color: var(--main-color);
-    letter-spacing: .7rem;
 }
 
 
@@ -132,7 +132,8 @@ header{
     font-size:2.3rem;
 }
 
-.navListItem .active,.navListItem #links:hover{
+.navListItem .active,.navListItem #links:hover,
+.navListItem #links.active{
     color:var(--secondary-color);
 }
 
@@ -282,6 +283,75 @@ header{
 
 
 
+/* footer styles */
+
+footer{
+    padding:3rem 9%;
+}
+
+.footerTitle{
+    text-align: center;
+    font-size:2.9rem;
+    color:var(--vampire-black);
+    margin-bottom: 2rem;
+}
+
+.footerContainer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerBlock{
+    width:50%;
+}
+
+.footerBlock:last-child{
+    margin-top:7rem;
+}
+
+
+.footerBlockTitle{
+    text-align: center;
+    font-size:2.2rem;
+    color:var(--vampire-black);
+    margin-bottom:2rem;
+}
+
+.footerBlockList{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap:1.2rem;
+}
+
+.footerBlockList a{
+    font-size:1.5rem;
+    color:var(--charcoal);
+}
+
+.footerBlockList li{
+    display:flex;
+    align-items: center;
+    gap:1.6rem;
+    font-size:2rem;
+    color:var(--vampire-black);
+}
+
+.footerBlockList li:last-child{
+    flex-direction: column;
+}
+
+.footerBlockList li span{
+    font-size:1.5rem;
+    color:var(--charcoal);
+}
+
+.footerBlockList li img{
+    width:15rem;
+    height:8rem;
+}
+
 
 
 
@@ -325,10 +395,18 @@ header{
     html{
         font-size: 55%;
     }
+
 }
 
 @media (max-width:468px) {
     html{
         font-size: 50%;
+    }
+    .footerContainer{
+        flex-direction: column;
+    }
+
+    .footerBlock{
+        width:100%;
     }
 }

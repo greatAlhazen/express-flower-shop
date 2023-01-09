@@ -7,4 +7,8 @@ inputs.forEach(item =>{
     item.addEventListener('change',function(){
         item.nextElementSibling.nextElementSibling.click();
     })
-})
+});
+
+//custom link activate
+const homeLink = document.querySelector("[href='/home/']");
+homeLink.classList.remove('active');
