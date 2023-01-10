@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 
 
 module.exports.getUpdatePage = (req,res) =>{
-    res.render('profile',{
+    res.render('users/profile',{
         username:req.username,
         id,
         email: req.email,
@@ -17,7 +17,7 @@ module.exports.postUpdate = async(req,res,next) =>{
     //protect admin
    if(req.body.isAdmin){
     req.flash('error','congratulations- you are smart guy');
-    res.status(201).redirect('/home/');
+    res.status(201).redirect('/');
    }else{
     const user = await User.findById(req.params.id);
    
@@ -39,7 +39,7 @@ module.exports.postUpdate = async(req,res,next) =>{
         );
 
         req.flash('success','Update User Succesfully');
-        res.status(201).redirect('/home/');
+        res.status(201).redirect('/');
 
    } 
 }
@@ -62,7 +62,10 @@ module.exports.deleteUser = async(req,res,next) =>{
 
  // change password page
 module.exports.changePasswordPage = (req,res) =>{
-    res.render('changePasswd');
+    res.render('users/changePasswd',{
+        id
+    }
+    );
 }
 
 
@@ -70,7 +73,7 @@ module.exports.changePasswordPage = (req,res) =>{
 module.exports.changePassword = async(req,res,next) =>{
 
     const {oldPassword,newPassword} = req.body;
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id).select('+password');
 
     if(!oldPassword || !newPassword){
         req.flash('error','Old And New Password is required');
@@ -85,7 +88,7 @@ module.exports.changePassword = async(req,res,next) =>{
 
             await user.save();
             req.flash('success','Password Successfully Update');
-            res.status(201).redirect('/home/');
+            res.status(201).redirect('/');
         }
     }
 

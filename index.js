@@ -30,6 +30,8 @@ if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
 }
 
+const MongoDBStore = require('connect-mongo')(session);
+
 // database configuration
 const mongoDbUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/flower';
 database(mongoDbUrl);
@@ -42,9 +44,19 @@ app.use(express.urlencoded({ extended: true }));
 // method override configuration
 app.use(methodOverride('_method'));
 
+secret = process.env.SESSION_SECRET
+// session store configuration
+const store = new MongoDBStore({
+    url: mongoDbUrl,
+    secret,
+    touchAfter: 24 * 60 * 60
+});
 // session configuration
-const sessionOptions = {secret:process.env.SESSION_SECRET,resave: false,
-saveUninitialized: true}
+const sessionOptions = {store,
+    secret,
+    resave: false,
+    saveUninitialized: true
+}
 app.use(session(sessionOptions));
 
 // flash messages configuration
@@ -63,7 +75,7 @@ app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
  // routes configuration
-app.use('/home',homeRoute);
+app.use(homeRoute);
 app.use('/auth',authRoute);
 app.use('/user',userRoute);
 app.use('/admin',adminRoute);
@@ -71,6 +83,11 @@ app.use('/product',productRoute);
 app.use('/reviews',reviewsRoute);
 app.use('/cart',cartRoute);
 app.use('/stripe',stripeRoute);
+
+////page not found
+app.all('*', (req, res, next) => {
+    next(createError(404,'Page Not Found'));
+})
 
 
 
@@ -91,7 +108,6 @@ app.use((err,req,res,next) =>{
         success:false,
         status,
         message,
-        stack: err.stack
     })
 })
 

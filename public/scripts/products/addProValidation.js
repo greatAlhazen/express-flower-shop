@@ -12,8 +12,8 @@ title.addEventListener('keyup',function(){
     if (title.value.length == 0){
         titleError.innerHTML = 'Title is required';
         titleError.style.color = 'var(--main-color)'
-    }else if(!(title.value.match('^[A-Za-z0-9]{4,16}$'))){
-        titleError.innerHTML = 'Title character between 4 and 16';
+    }else if(!(title.value.length > 4 && title.value.length < 40)){
+        titleError.innerHTML = 'Title Character Between 10 and 40';
         titleError.style.color = 'var(--main-color)'
     }else{
         titleError.innerHTML = 'valid';
@@ -30,8 +30,8 @@ desc.addEventListener('keyup',function(){
     if(desc.value.length == 0){
         descError.innerHTML = 'Description is required';
         descError.style.color = 'var(--main-color)'
-    }else if(!(desc.value.length > 10 && desc.value.length < 160)){
-        descError.innerHTML = 'Description Character Between 10 and 300';
+    }else if(!(desc.value.length > 10 && desc.value.length < 500)){
+        descError.innerHTML = 'Description Character Between 10 and 500';
         descError.style.color = 'var(--main-color)'
     }else{
         descError.innerHTML = 'valid';

@@ -19,11 +19,12 @@
     font-size:4rem;
     letter-spacing: .2rem;
     text-align: center;
+    color:var(--vampire-black);
 }
 
 .homeContentDesc{
     font-size:1.8rem;
-    color:var(--gray);
+    color:var(--charcoal);
     text-align: center;
 }
 

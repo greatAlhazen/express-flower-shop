@@ -35,7 +35,7 @@ sort.forEach(element => {
 });
 
 //custom link activate
-const homeLink = document.querySelector("[href='/home/']");
+const homeLink = document.querySelector("[href='/']");
 const productsLink = document.querySelector("[href='/product/products']");
 
 homeLink.classList.remove('active');

@@ -1,12 +1,12 @@
-<%- include('partials/head')  %>
-<link rel="stylesheet" href="/css/profile.css">
+<%- include('../partials/head')  %>
+<link rel="stylesheet" href="/css/users/profile.css">
 </head>
 <body>
 
 
     <!-- user page -->
     <section class="userPage">
-        <a href="/home/" class="cancel btn-2">Cancel</a>
+        <a href="/" class="cancel btn-2">Cancel</a>
         <form class="formContainer" action="/user/update/<%= id  %>?_method=PUT" method="POST" enctype="multipart/form-data">
             <h1 class="formContainerTitle">Profile</h1>
             <input type="file" name="image" hidden id="file" accept="image/*" value=<%= image  %> >
@@ -28,6 +28,6 @@
     </form>
     </section>
 
-    <script src="/scripts/profile.js"></script>
-    <script src="/scripts/imageUpload.js"></script>
-    <%- include('partials/end')  %> 
+    <script src="/scripts/users/profile.js"></script>
+    <script src="/scripts/others/imageUpload.js"></script>
+    <%- include('../partials/end')  %> 

@@ -19,7 +19,7 @@ module.exports.getCartPage = async(req,res,next) =>{
             totalPrice = totalPrice + (item.product.price * item.quantity);
         });
 
-        res.status(201).render('cart',{
+        res.status(201).render('products/cart',{
             username:req.username,
             isAdmin:req.isAdmin,
             id,

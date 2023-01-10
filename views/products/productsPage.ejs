@@ -1,18 +1,19 @@
-<%- include('partials/head')  %>
-<link rel="stylesheet" href="/css/productsPage.css">
-<link rel="stylesheet" href="/css/products.css">
+<%- include('../partials/head')  %>
+<link rel="stylesheet" href="/css/products/productsPage.css">
+<link rel="stylesheet" href="/css/products/products.css">
 </head>
 <body>
 
-    <%- include('partials/navbar')  %> 
+    <%- include('../partials/navbar')  %> 
 
-    <%- include('partials/flash')  %> 
+    <%- include('../partials/flash')  %> 
 
     <!-- products page -->
 <section class="productsPageContainer">
     <div class="categories">
         <form action="/product/products" class="productCategories">
         <select name="category" id="category" required>
+            <option value="all" id="all">All</option>
             <option value="annuals" id="annuals">Annuals</option>
             <option value="biennials" id="biennials">Biennials</option>
             <option value="perennials" id="perennials">Perennials</option>
@@ -28,12 +29,12 @@
     </form>
  </div>
 
- <%- include('partials/products')  %> 
+ <%- include('../partials/products')  %> 
 
     
     </section>
 
-    <script src="/scripts/navbar.js"></script>
-    <script src="/scripts/productsPage.js"></script>
+    <script src="/scripts/others/navbar.js"></script>
+    <script src="/scripts/products/productsPage.js"></script>
 
-<%- include('partials/end')  %> 
+<%- include('../partials/end')  %> 

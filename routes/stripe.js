@@ -20,13 +20,13 @@ router.get(
 		user.cartQuantity = 0;
 		await user.save();
 
-		res.render('success');
+		res.render('stripe/success');
 	})
 );
 
 ///stripe cancel page
 router.get('/cancel/:id', verify.verifyToken, verify.verifyAndAuthorize, (req, res) => {
-	res.render('cancel');
+	res.render('stripe/cancel');
 });
 
 //stripe redirect

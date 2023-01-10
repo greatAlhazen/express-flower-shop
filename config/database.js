@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const databaseConnection = (url) =>{
     mongoose.connect(url,{
         useNewUrlParser: true,
+        useUnifiedTopology: true,
     }).then((data) =>{
         console.log(`connection opened ${data.connection.host}`);
     })

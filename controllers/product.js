@@ -30,7 +30,7 @@ module.exports.addProduct = async(req,res,next) =>{
 
 //get all products
 module.exports.getProducts = (req,res) =>{
-    res.render('productsPage',{
+    res.render('products/productsPage',{
         username:req.username,
         isAdmin:req.isAdmin,
         id,
@@ -47,7 +47,7 @@ module.exports.updateProductPage = async(req,res,next) =>{
     const id = req.params.id;
     const product = await Product.findById(id);
 
-    res.render('updateProduct',{product});
+    res.render('products/updateProduct',{product});
 }
 
 //update product
@@ -85,7 +85,7 @@ module.exports.deleteProduct = async(req,res,next) =>{
     const cart = await Cart.findOne({'cartItems.product': req.params.id}).populate('cartItems.product').populate('owner');
 
     //delete cartItems match deleted product
-    await Cart.findOneAndUpdate({owner: id , 'cartItems.product': req.params.id },
+   const updatedCart = await Cart.findOneAndUpdate({owner: id , 'cartItems.product': req.params.id },
     {
         $pull: {
             "cartItems":{
@@ -126,7 +126,7 @@ module.exports.getProduct = async(req,res,next) =>{
         }
     });
 
-    res.render('singleProduct',{
+    res.render('products/singleProduct',{
         username:req.username,
         isAdmin:req.isAdmin,
         id,

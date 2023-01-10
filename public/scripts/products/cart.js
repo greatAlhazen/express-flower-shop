@@ -10,5 +10,5 @@ inputs.forEach(item =>{
 });
 
 //custom link activate
-const homeLink = document.querySelector("[href='/home/']");
+const homeLink = document.querySelector("[href='/']");
 homeLink.classList.remove('active');

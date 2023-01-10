@@ -10,12 +10,12 @@ const jwt = require('jsonwebtoken');
 // login page
 module.exports.getlogin = (req,res) =>{
    if(!req.user){
-    res.render('login',{
+    res.render('users/login',{
         path:req.query.path,
     })
     }else{
         req.flash('error','you already logged in');
-        res.status(302).redirect('/home/');
+        res.status(302).redirect('/');
     }
 
 }
@@ -23,10 +23,10 @@ module.exports.getlogin = (req,res) =>{
 // register page
 module.exports.getRegister = (req,res) =>{
     if(!req.user){
-        res.render('register')
+        res.render('users/register')
         }else{
             req.flash('error','you already logged in');
-            res.status(302).redirect('/home/');
+            res.status(302).redirect('/');
         }
 }
 
@@ -35,7 +35,7 @@ module.exports.postRegister =async (req,res,next) =>{
     //protect admin
     if(req.body.user.isAdmin){
         req.flash('error','congratulations- you are smart guy');
-        res.status(201).redirect('/home/');
+        res.status(201).redirect('/');
     }else{
         if(!req.user){
             try{
@@ -57,7 +57,7 @@ module.exports.postRegister =async (req,res,next) =>{
             }
         }else{
             req.flash('error','you already logged in');
-            res.status(302).redirect('/home/');
+            res.status(302).redirect('/');
         }
         
     }
@@ -90,7 +90,7 @@ module.exports.postLogin = async(req,res,next) =>{
             if(req.query.path === 'products'){
                 res.status(201).redirect('/product/products');
             }else{
-                res.status(201).redirect('/home/');
+                res.status(201).redirect('/');
             }
         };
     }} else{
@@ -108,7 +108,7 @@ module.exports.logout = (req,res,next) =>{
     if(req.query.path === 'products'){
         res.status(302).redirect('/product/products')
     }else{
-        res.status(302).redirect('/home/')
+        res.status(302).redirect('/')
     }
    
 }

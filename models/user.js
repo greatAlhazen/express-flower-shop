@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const Cart = require('../models/cart');
 
 const UserSchema = new mongoose.Schema({
     username:{
@@ -43,5 +44,14 @@ UserSchema.pre("save", async function (next) {
     this.password = hashedPassword;
     next();
 });
+
+
+UserSchema.post('findOneAndDelete',async function(doc){
+    if(doc){
+        await Cart.deleteOne({
+            owner: doc,
+        })
+    }
+})
 
 module.exports = mongoose.model('User',UserSchema);

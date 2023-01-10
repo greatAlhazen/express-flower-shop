@@ -30,6 +30,8 @@ router.route('/delete/:id').delete(
 router.route('/change/:id').get(
     verify.verifyToken,
     verify.verifyAndAuthorize,
+    getUser.jwtVerify,
+    catchAsync(getUser.sendUser),
     user.changePasswordPage
     )
 .put(catchAsync(user.changePassword));

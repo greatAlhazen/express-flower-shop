@@ -1,13 +1,13 @@
-<%- include('partials/head')  %>
-<link rel="stylesheet" href="/css/form.css">
+<%- include('../partials/head')  %>
+<link rel="stylesheet" href="/css/users/form.css">
 </head>
 <body>
 
-    <%- include('partials/flash')  %> 
+    <%- include('../partials/flash')  %> 
     
     <!-- change password page -->
     <section class="formContainer">
-        <form action="/user/change/<%= id  %>?_method=PUT" method="POST">
+        <form action="/user/change/<%= id %>?_method=PUT" method="POST">
         <h1 class="formContainerHeading">Change Password</h1>
         <div class="formContainerBox">
             <input type="password" name="oldPassword" placeholder="please enter your old password...." autocomplete="off" id="oldPassword">
@@ -23,10 +23,10 @@
         </div>
         <span class="formContainerBoxInfo" id="commonError"></span>
         <button class="btn" id="submitButton" onclick="return validateForm()">Change</button>
-        <a href="/home/" class="formContainerRedirect"><span>Cancel</span></a>
+        <a href="/" class="formContainerRedirect"><span>Cancel</span></a>
     </form>
     </section>
 
-    <script src="/scripts/form.js"></script>
-    <script src="/scripts/changePasswd.js"></script>
-    <%- include('partials/end')  %> 
+    <script src="/scripts/users/form.js"></script>
+    <script src="/scripts/users/changePasswd.js"></script>
+    <%- include('../partials/end')  %> 

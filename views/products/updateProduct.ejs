@@ -1,7 +1,7 @@
-<%- include('partials/head')  %>
-<link rel="stylesheet" href="/css/productForm.css">
-<link rel="stylesheet" href="/css/profile.css">
-<link rel="stylesheet" href="/css/updateProduct.css">
+<%- include('../partials/head')  %>
+<link rel="stylesheet" href="/css/products/productForm.css">
+<link rel="stylesheet" href="/css/users/profile.css">
+<link rel="stylesheet" href="/css/products/updateProduct.css">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
         <span class="formContainerBoxInfo" id="titleError"></span>
     </div>
     <div class="formContainerTextarea">
-        <textarea name="product[desc]" id="desc" required ><%= product.description  %></textarea>
+        <textarea name="product[description]" id="desc" required ><%= product.description  %></textarea>
         <h4>Description </h4>
         <span class="formContainerBoxInfo" id="descError"></span>
     </div>
@@ -43,8 +43,8 @@
 </form>
 
 
-    <script src="/scripts/addProValidation.js"></script>
-    <script src="/scripts/imageUpload.js"></script>
+    <script src="/scripts/products/addProValidation.js"></script>
+    <script src="/scripts/others/imageUpload.js"></script>
 
 
-    <%- include('partials/end')  %> 
+    <%- include('../partials/end')  %> 

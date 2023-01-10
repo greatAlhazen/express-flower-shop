@@ -22,7 +22,6 @@ module.exports.verifyToken = (req,res,next) =>{
  // user authorization
 module.exports.verifyAndAuthorize = (req,res,next) =>{
    this.verifyToken(req,res,() =>{
-    console.log(req.user.id,req.params.id)
         if(req.user.id === req.params.id || req.user.admin){
             next();
         }else{

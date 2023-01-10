@@ -1,11 +1,11 @@
-<%- include('partials/head')  %>
-<link rel="stylesheet" href="/css/singleProduct.css">
+<%- include('../partials/head')  %>
+<link rel="stylesheet" href="/css/products/singleProduct.css">
 </head>
 <body>
 
-    <div class="backDiscover"><a href="/home">Back</a></div>
+    <div class="backDiscover"><a href="/product/products">Back</a></div>
 
-    <%- include('partials/flash')  %> 
+    <%- include('../partials/flash')  %> 
 
     <!-- product detail section -->
 <section class="productDetail">
@@ -58,7 +58,7 @@
             <div class="ProductReviewCardDetail">
                 <p class="productReviewDesc"><%= review.body %> </p>
                 <div class="productReviewstars">
-                    <% for(let i=0; i<= review.rating; i++)  { %>
+                    <% for(let i=0; i < review.rating; i++)  { %>
                     <i class="fas fa-star"></i>
                     <% } %>
                 </div>
@@ -76,14 +76,14 @@
     </div>
 
 
-    <%- include('partials/products')  %> 
+    <%- include('../partials/products')  %> 
 
 </section>
 
-    <script src="/scripts/singleProduct.js"></script>
-    <script src="/scripts/navbar.js"></script>
-    <script src="/scripts/reviewValidation.js"></script>
+    <script src="/scripts/products/singleProduct.js"></script>
+    <script src="/scripts/others/navbar.js"></script>
+    <script src="/scripts/products/reviewValidation.js"></script>
 
 
-<%- include('partials/end')  %> 
+<%- include('../partials/end')  %> 
 

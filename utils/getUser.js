@@ -31,7 +31,7 @@ module.exports.sendUser = async (req, res, next) => {
       } else {
         req.username = undefined;
         req.isAdmin = undefined;
-        id = undefined;
+        id = 1;
         image = undefined;
         req.email = undefined;
         req.cartQuantity = 0;

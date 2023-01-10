@@ -1,11 +1,11 @@
-<%- include('partials/head')  %>
-<link rel="stylesheet" href="/css/productForm.css">
-<link rel="stylesheet" href="/css/profile.css">
-<link rel="stylesheet" href="/css/dashboard.css">
+<%- include('../partials/head')  %>
+<link rel="stylesheet" href="/css/products/productForm.css">
+<link rel="stylesheet" href="/css/users/profile.css">
+<link rel="stylesheet" href="/css/admin/dashboard.css">
 </head>
 <body>
     
-    <%- include('partials/flash')  %> 
+    <%- include('../partials/flash')  %> 
 
 <!-- admin sidebar -->
     <section class="adminMain" id="adminMain">
@@ -18,7 +18,7 @@
                 <div class="links">
                     <ul>
                         <li>
-                            <a href="/home/">
+                            <a href="/">
                                 <i class="fa-solid fa-house"></i>
                                 <span>Home</span>
                             </a>
@@ -169,7 +169,7 @@
     
 
 
-    <script src="/scripts/dashboard.js"></script>
-    <script src="/scripts/addProValidation.js"></script>
-    <script src="/scripts/imageUpload.js"></script>
-    <%- include('partials/end')  %> 
+    <script src="/scripts/admin/dashboard.js"></script>
+    <script src="/scripts/product/addProValidation.js"></script>
+    <script src="/scripts/others/imageUpload.js"></script>
+    <%- include('../partials/end')  %> 

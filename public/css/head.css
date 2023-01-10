@@ -81,6 +81,7 @@ a{
     font-size:3rem;
     margin-bottom:3rem;
     transition: all .2s;
+    text-transform: uppercase;
 }
 
 .heading:hover{
