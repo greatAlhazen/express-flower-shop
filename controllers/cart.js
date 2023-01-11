@@ -119,7 +119,7 @@ module.exports.updateCart = async(req,res,next) =>{
     await user.save();
 
     req.flash('success','Update Cart Successfuly');
-    res.redirect('/cart/getCart');
+    res.redirect(`/cart/getcart/${id}`);
     
 };
 
@@ -140,6 +140,6 @@ module.exports.deleteItem = async(req,res,next) =>{
 
     req.flash('success','Delete Item Successfully');
 
-    res.status(201).redirect('/cart/getCart');
+    res.status(201).redirect(`/cart/getCart/${id}`);
 
 }

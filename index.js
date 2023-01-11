@@ -33,7 +33,7 @@ if (process.env.NODE_ENV !== "production") {
 const MongoDBStore = require('connect-mongo')(session);
 
 // database configuration
-const mongoDbUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/flower';
+const mongoDbUrl = process.env.MONGO_URL || `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongodb:27017/course-goals?authSource=admin`;
 database(mongoDbUrl);
 
 const app = express();
